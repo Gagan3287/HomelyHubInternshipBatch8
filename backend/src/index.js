@@ -19,7 +19,7 @@ const app = express();
 // the Vite dev server (5173) and this server (8080).
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "http://localhost:5173",
+    origin: process.env.ORIGIN_ACCESS_URL,
     credentials: true,
   })
 );
@@ -32,11 +32,7 @@ app.use(express.urlencoded({ limit: "100mb", extended: true }));
 
 //cookieParser
 app.use(cookieParser());
-app.use(
-  cors({
-    origin: process.env.ORIGIN_ACCESS_URL,
-    credentials: true,
-  }))
+
 const port = process.env.PORT
 
 //test route
