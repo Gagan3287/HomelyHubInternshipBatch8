@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+Disallow: /login
+Disallow: /signup
+Disallow: /profile
+Disallow: /editprofile
+Disallow: /user/
+Disallow: /payment/
+Disallow: /accomodationform
+
+Sitemap: https://homelyhub.vercel.app/sitemap.xml
