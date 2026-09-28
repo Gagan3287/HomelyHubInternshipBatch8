@@ -1,3 +1,4 @@
+/* Spinner.css — migrated to design tokens */
 .loader {
   width: 48px;
   height: 48px;
@@ -12,13 +13,13 @@
   position: absolute;
   inset: 0px;
   border-radius: 50%;
-  border: 5px solid #333;
+  border: 5px solid var(--color-charcoal);
   animation: prixClipFix 2s linear infinite;
 }
 .loader::after {
   inset: 8px;
   transform: rotate3d(90, 90, 0, 180deg);
-  border-color: #ff3d00;
+  border-color: var(--color-brand);
 }
 
 @keyframes rotate {

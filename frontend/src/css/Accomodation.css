@@ -1,3 +1,4 @@
+/* Accomodation.css — migrated to design tokens */
 .accom-container {
   display: flex;
   flex-direction: column;
@@ -10,8 +11,9 @@
   border-radius: 30px;
   border: none;
   margin-top: 2rem;
-  background-color: #0e8b53;
-  color: white;
+  background-color: var(--color-brand);
+  color: var(--color-white);
+  font-family: var(--font-body);
 }
 .accom-form-container {
   width: 100%;
@@ -32,7 +34,10 @@ form {
   height: 50px;
   padding: 8px;
   border-radius: 10px;
-  border: 1px solid grey;
+  border: 1px solid var(--color-grey);
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-input-bg);
 }
 
 .input-container > input:focus,
@@ -42,6 +47,7 @@ textarea:focus {
 
 textarea::placeholder {
   font-size: 15px;
+  font-family: var(--font-body);
 }
 
 .title::placeholder,
@@ -59,7 +65,10 @@ textarea::placeholder {
   height: 50px;
   padding: 8px;
   border-radius: 10px;
-  border: 1px solid grey;
+  border: 1px solid var(--color-grey);
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-input-bg);
 }
 
 .address-fields > input::placeholder {
@@ -70,16 +79,21 @@ textarea::placeholder {
   border-radius: 10px;
   padding: 8px;
   row-gap: 3;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-input-bg);
 }
 
 div > .form-labels {
-  color: grey;
+  color: var(--color-grey-text);
   font-size: 13px;
+  font-family: var(--font-body);
 }
 
 div > .form-paras {
-  color: grey;
+  color: var(--color-grey-text);
   font-size: 13px;
+  font-family: var(--font-body);
 }
 .perks {
   width: 100%;
@@ -98,7 +112,7 @@ div > .form-paras {
   justify-content: flex-start;
   align-items: center;
   border-radius: 10px;
-  border: 1px solid grey;
+  border: 1px solid var(--color-grey);
 }
 
 .perks > div input {
@@ -117,8 +131,11 @@ section {
 
 section > input {
   border-radius: 10px;
-  border: 1px solid gray;
+  border: 1px solid var(--color-grey);
   padding: 8px;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-input-bg);
 }
 section > input::placeholder {
   font-size: 15px;
@@ -128,14 +145,16 @@ section > input::placeholder {
   width: 100%;
   border-radius: 10px;
   padding: 7px;
-  background-color: #0e8b53;
+  background-color: var(--color-brand);
   border: none;
   margin: 1rem auto;
-  color: white;
+  color: var(--color-white);
+  font-family: var(--font-body);
 }
 
 .checkbox-container > span {
   font-size: 16px;
+  font-family: var(--font-body);
 }
 
 .image-link {
@@ -151,8 +170,8 @@ section > input::placeholder {
 }
 
 .add-button:focus {
-  background-color: #0e8b53;
-  color: white;
+  background-color: var(--color-brand);
+  color: var(--color-white);
   outline: none;
 }
 
@@ -173,13 +192,13 @@ section > input::placeholder {
   height: 50px;
   padding: 8px;
   border-radius: 10px;
-  border: 1px solid grey;
+  border: 1px solid var(--color-grey);
 }
 
 .upload {
   width: 11rem;
   height: 7rem;
-  background-color: lightgrey;
+  background-color: var(--color-grey-mid);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -209,7 +228,7 @@ section > input::placeholder {
 }
 
 .myaccomodation-container:hover {
-  box-shadow: 1px 1px 15px rgb(161, 160, 160);
+  box-shadow: 1px 1px 15px var(--color-grey-mid);
   transform: scale(1.1);
 }
 
@@ -233,7 +252,7 @@ section > input::placeholder {
 
 .myaccomodation-information {
   height: 12rem;
-  background-color: rgb(223, 223, 223);
+  background-color: var(--color-grey);
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   display: flex;
@@ -249,12 +268,13 @@ section > input::placeholder {
 .info {
   display: flex;
   margin-right: 0.5rem;
-  color: grey;
+  color: var(--color-grey-text);
   font-size: 13px;
+  font-family: var(--font-body);
 }
 
 .icon {
-  color: grey;
+  color: var(--color-grey-text);
   font-size: 20px;
 }
 
@@ -265,10 +285,11 @@ section > input::placeholder {
 }
 .myaccomodation-city,
 .myaccomodation-guest {
-  color: grey;
+  color: var(--color-grey-text);
   margin: 0px;
   padding: 0px;
   font-size: 15px;
+  font-family: var(--font-body);
 }
 
 .description-label-row {
@@ -282,12 +303,13 @@ section > input::placeholder {
 .ai-desc {
   border-radius: 10px;
   padding: 5px 14px;
-  background-color: #0e8b53;
+  background-color: var(--color-brand);
   border: none;
-  color: white;
+  color: var(--color-white);
   font-size: 13px;
   white-space: nowrap;
   cursor: pointer;
+  font-family: var(--font-body);
 }
 
 .ai-desc:disabled {
@@ -312,20 +334,22 @@ section > input::placeholder {
   gap: 0.5rem;
   font-size: 2rem;
   font-weight: 700;
-  color: #14532d;
+  color: var(--color-text-forest);
   margin-bottom: 0.5rem;
+  font-family: var(--font-display);
 }
 
 .accf-hero h1 .material-symbols-outlined {
   font-size: 1.8rem;
-  color: #0e8b53;
+  color: var(--color-brand);
 }
 
 .accf-hero p {
-  color: #4b5f54;
+  color: var(--color-text-mid-green);
   font-size: 0.95rem;
   max-width: 30rem;
   margin: 0 auto;
+  font-family: var(--font-body);
 }
 .accf-form {
   display: flex;
@@ -334,8 +358,8 @@ section > input::placeholder {
 }
 
 .accf-card {
-  background: #fff;
-  border: 1px solid #eaf0ec;
+  background: var(--color-white);
+  border: 1px solid var(--color-green-surface);
   border-radius: 1rem;
   padding: 1.5rem;
   box-shadow: 0 6px 24px rgba(20, 83, 45, 0.07);
@@ -350,19 +374,21 @@ section > input::placeholder {
 
 .accf-sec .material-symbols-outlined {
   font-size: 1.2rem;
-  color: #0e8b53;
+  color: var(--color-brand);
 }
 
 .accf-sec h2 {
   font-size: 1.05rem;
   font-weight: 700;
-  color: #14532d;
+  color: var(--color-text-forest);
   margin: 0;
+  font-family: var(--font-display);
 }
 
 .accf-hint {
   font-size: 0.8rem;
-  color: #8aa196;
+  color: var(--color-text-hint);
+  font-family: var(--font-body);
 }
 .accf-field {
   display: flex;
@@ -373,30 +399,31 @@ section > input::placeholder {
 .accf-field label {
   font-size: 0.82rem;
   font-weight: 600;
-  color: #33413a;
+  color: var(--color-text-dark-green);
   margin-bottom: 0.35rem;
+  font-family: var(--font-body);
 }
 
 .accf-input {
   width: 100%;
   padding: 0.65rem 0.8rem;
-  border: 1px solid #dfe6e1;
+  border: 1px solid var(--color-input-border);
   border-radius: 0.6rem;
   font-size: 0.95rem;
-  font-family: inherit;
-  background: #fff;
-  color: #1b2a23;
+  font-family: var(--font-body);
+  background: var(--color-white);
+  color: var(--color-text);
   transition: border-color 0.15s, box-shadow 0.15s;
 }
 
 .accf-input:focus {
   outline: none;
-  border-color: #0e8b53;
+  border-color: var(--color-brand);
   box-shadow: 0 0 0 3px rgba(14, 139, 83, 0.12);
 }
 
 .accf-input::placeholder {
-  color: #a8b8b0;
+  color: var(--color-text-hint);
   font-size: 0.9rem;
 }
 
@@ -441,11 +468,11 @@ section > input::placeholder {
   padding: 0 0.9rem;
   border: none;
   border-radius: 2rem;
-  background: #0e8b53;
-  color: #fff;
+  background: var(--color-brand);
+  color: var(--color-white);
   font-size: 0.8rem;
   font-weight: 600;
-  font-family: inherit;
+  font-family: var(--font-body);
   cursor: pointer;
   white-space: nowrap;
 }
@@ -455,7 +482,7 @@ section > input::placeholder {
 }
 
 .accf-ai:hover:enabled {
-  background: #0b7344;
+  background: var(--color-brand-dark);
 }
 
 .accf-ai:disabled {
@@ -467,17 +494,17 @@ section > input::placeholder {
   padding: 0.9rem;
   border: none;
   border-radius: 0.75rem;
-  background: #14532d;
-  color: #fff;
+  background: var(--color-text-forest);
+  color: var(--color-white);
   font-size: 1rem;
   font-weight: 600;
-  font-family: inherit;
+  font-family: var(--font-body);
   cursor: pointer;
   transition: background 0.15s;
 }
 
 .accf-save:hover:enabled {
-  background: #0e8b53;
+  background: var(--color-brand);
 }
 
 .accf-save:disabled {
@@ -506,15 +533,17 @@ section > input::placeholder {
 .accf-card .address-fields > input {
   width: 100%;
   padding: 0.65rem 0.8rem;
-  border: 1px solid #dfe6e1;
+  border: 1px solid var(--color-input-border);
   border-radius: 0.6rem;
   font-size: 0.95rem;
-  font-family: inherit;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-input-bg);
 }
 
 .accf-card .address-fields > input:focus {
   outline: none;
-  border-color: #0e8b53;
+  border-color: var(--color-brand);
   box-shadow: 0 0 0 3px rgba(14, 139, 83, 0.12);
 }
 .accf-card .perks {
@@ -531,17 +560,17 @@ section > input::placeholder {
   width: 100%;
   max-width: none;
   padding: 0.55rem 0.75rem;
-  border: 1px solid #dfe6e1;
+  border: 1px solid var(--color-input-border);
   border-radius: 0.6rem;
   cursor: pointer;
 }
 
 .accf-card .checkbox-container:hover {
-  border-color: #0e8b53;
+  border-color: var(--color-brand);
 }
 
 .accf-card .checkbox-container input[type="checkbox"] {
-  accent-color: #0e8b53;
+  accent-color: var(--color-brand);
   width: 1rem;
   height: 1rem;
   cursor: pointer;
@@ -550,11 +579,12 @@ section > input::placeholder {
 
 .accf-card .checkbox-container .material-symbols-outlined {
   font-size: 1.15rem;
-  color: #0e8b53;
+  color: var(--color-brand);
 }
 
 .accf-card .checkbox-container > span:last-child {
   font-size: 0.85rem;
+  font-family: var(--font-body);
 }
 @media (max-width: 600px) {
   .accf-page {

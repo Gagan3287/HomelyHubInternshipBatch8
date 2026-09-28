@@ -1,0 +1,371 @@
+/* ============================================================
+   HOMELYHUB PRIMITIVE COMPONENTS
+   Buttons · Inputs · Cards · Badges · Skeleton shimmer
+   Global :focus-visible ring · prefers-reduced-motion reset
+   ============================================================ */
+
+/* ── Base resets / accessibility ── */
+*:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   BUTTONS
+   ───────────────────────────────────────────── */
+
+.btn-hh {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1.5rem;
+  height: 2.75rem;
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: var(--transition-normal);
+  text-decoration: none;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-hh:disabled,
+.btn-hh[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Loading state */
+.btn-hh.btn-loading {
+  color: transparent;
+  pointer-events: none;
+}
+.btn-hh.btn-loading::after {
+  content: "";
+  position: absolute;
+  width: 1.1rem;
+  height: 1.1rem;
+  border: 2px solid transparent;
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: btn-spin 0.7s linear infinite;
+}
+@keyframes btn-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Primary */
+.btn-primary {
+  background-color: var(--color-brand);
+  color: var(--color-white);
+  box-shadow: var(--shadow-brand);
+}
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--color-brand-hover);
+  box-shadow: var(--shadow-brand-hover);
+  transform: translateY(-1px);
+}
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: var(--shadow-brand);
+}
+.btn-primary.btn-loading::after { border-top-color: var(--color-white); }
+
+/* Secondary */
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-brand);
+  border: 1.5px solid var(--color-green-border);
+  box-shadow: none;
+}
+.btn-secondary:hover:not(:disabled) {
+  background-color: var(--color-green-hover);
+  border-color: var(--color-brand);
+  color: var(--color-brand-hover);
+}
+.btn-secondary:active:not(:disabled) {
+  background-color: var(--color-light-green-2);
+}
+
+/* Ghost */
+.btn-ghost {
+  background-color: transparent;
+  color: var(--color-text-muted);
+  border: none;
+  padding-inline: 0.75rem;
+}
+.btn-ghost:hover:not(:disabled) {
+  background-color: var(--color-body-bg-muted);
+  color: var(--color-text);
+}
+
+/* Danger */
+.btn-danger {
+  background-color: var(--color-error);
+  color: var(--color-white);
+  box-shadow: 0 4px 12px rgba(185, 28, 28, 0.25);
+}
+.btn-danger:hover:not(:disabled) {
+  filter: brightness(0.9);
+  transform: translateY(-1px);
+}
+
+/* Small variant */
+.btn-sm {
+  height: 2.1rem;
+  padding: 0 1rem;
+  font-size: var(--text-xs);
+  border-radius: var(--radius-sm);
+}
+
+/* ─────────────────────────────────────────────
+   INPUT FIELDS
+   ───────────────────────────────────────────── */
+
+.hh-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.hh-label {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-text-evergreen);
+}
+
+.hh-input {
+  width: 100%;
+  height: 2.75rem;
+  padding: 0 0.9rem;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  background: var(--color-input-bg);
+  border: 1px solid var(--color-input-border);
+  border-radius: var(--radius-sm);
+  transition: var(--transition-fast);
+  appearance: none;
+}
+
+.hh-input::placeholder {
+  color: var(--color-text-hint);
+  font-size: var(--text-xs);
+}
+
+.hh-input:hover {
+  border-color: var(--color-brand);
+}
+
+.hh-input:focus,
+.hh-input:focus-within {
+  outline: none;
+  border-color: var(--color-brand);
+  background: var(--color-white);
+  box-shadow: 0 0 0 3px rgba(14, 139, 83, 0.15);
+}
+
+.hh-input--error {
+  border-color: var(--color-error);
+}
+.hh-input--error:focus {
+  box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.15);
+}
+
+.hh-error-msg {
+  font-size: var(--text-label);
+  color: var(--color-error);
+  margin-top: 0.2rem;
+}
+
+textarea.hh-input {
+  height: auto;
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+  resize: vertical;
+  line-height: 1.55;
+}
+
+/* ─────────────────────────────────────────────
+   CARDS
+   ───────────────────────────────────────────── */
+
+.hh-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-green-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-normal);
+}
+
+.hh-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* ─────────────────────────────────────────────
+   BADGES
+   ───────────────────────────────────────────── */
+
+.hh-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.hh-badge-primary {
+  background: var(--color-brand);
+  color: var(--color-white);
+}
+.hh-badge-muted {
+  background: var(--color-green-surface);
+  color: var(--color-text-evergreen);
+}
+.hh-badge-success {
+  background: var(--color-success-bg);
+  color: var(--color-success);
+}
+.hh-badge-warning {
+  background: var(--color-warning-bg);
+  color: var(--color-warning);
+}
+.hh-badge-error {
+  background: var(--color-error-bg);
+  color: var(--color-error);
+}
+
+/* ─────────────────────────────────────────────
+   SKELETON SHIMMER
+   ───────────────────────────────────────────── */
+
+@keyframes hh-shimmer {
+  0%   { background-position: -800px 0; }
+  100% { background-position: 800px 0; }
+}
+
+.hh-skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-surface-muted) 25%,
+    var(--color-surface) 50%,
+    var(--color-surface-muted) 75%
+  );
+  background-size: 800px 100%;
+  animation: hh-shimmer 1.4s ease-in-out infinite;
+  border-radius: var(--radius-sm);
+}
+
+.hh-skeleton-text {
+  height: 0.9rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 0.4rem;
+}
+.hh-skeleton-heading {
+  height: 1.4rem;
+  width: 60%;
+  border-radius: var(--radius-sm);
+  margin-bottom: 0.6rem;
+}
+.hh-skeleton-image {
+  width: 100%;
+  padding-top: 75%; /* 4:3 aspect */
+  border-radius: var(--radius-md);
+}
+
+/* ─────────────────────────────────────────────
+   THIRD-PARTY OVERRIDES: react-datepicker
+   ───────────────────────────────────────────── */
+
+.react-datepicker {
+  font-family: var(--font-body) !important;
+  border: 1px solid var(--color-input-border) !important;
+  border-radius: var(--radius-md) !important;
+  background: var(--color-surface) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+.react-datepicker__header {
+  background: var(--color-green-alt) !important;
+  border-bottom: 1px solid var(--color-green-border) !important;
+}
+.react-datepicker__current-month,
+.react-datepicker__day-name {
+  color: var(--color-text-evergreen) !important;
+}
+.react-datepicker__day {
+  color: var(--color-text) !important;
+}
+.react-datepicker__day:hover {
+  background: var(--color-green-hover) !important;
+  border-radius: var(--radius-sm) !important;
+}
+.react-datepicker__day--selected,
+.react-datepicker__day--in-range {
+  background: var(--color-brand) !important;
+  color: var(--color-white) !important;
+  border-radius: var(--radius-sm) !important;
+}
+
+/* ─────────────────────────────────────────────
+   THIRD-PARTY OVERRIDES: react-input-range
+   ───────────────────────────────────────────── */
+
+.input-range__track--background {
+  background: var(--color-green-surface) !important;
+}
+.input-range__track--active {
+  background: var(--color-brand) !important;
+}
+.input-range__slider {
+  background: var(--color-brand) !important;
+  border-color: var(--color-white) !important;
+}
+.input-range__label-container {
+  color: var(--color-text-evergreen) !important;
+  font-family: var(--font-body) !important;
+}
+
+/* ─────────────────────────────────────────────
+   THIRD-PARTY OVERRIDES: Leaflet controls
+   ───────────────────────────────────────────── */
+
+.leaflet-control-zoom a {
+  background: var(--color-surface) !important;
+  color: var(--color-text) !important;
+  border-color: var(--color-border) !important;
+}
+.leaflet-control-zoom a:hover {
+  background: var(--color-green-hover) !important;
+}
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  background: var(--color-surface) !important;
+  color: var(--color-text) !important;
+  box-shadow: var(--shadow-md) !important;
+}

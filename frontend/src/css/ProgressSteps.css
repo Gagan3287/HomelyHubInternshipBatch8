@@ -1,3 +1,4 @@
+/* ProgressSteps.css — migrated to design tokens */
 .checkout-progress {
   display: flex;
   justify-content: center;
@@ -7,28 +8,29 @@
 
 .progress-button {
   text-decoration: none;
-  color: black;
+  color: var(--color-text);
   padding: 10px 20px;
   border: none;
-  border-radius: 5px;
+  border-radius: var(--radius-sm);
   margin-right: 10px;
-  background-color: #ddd;
+  background-color: var(--color-grey);
   cursor: pointer;
+  font-family: var(--font-body);
 }
 
 .progress-button.active-button {
-  background-color: #0e8b53;
-  color: white;
+  background-color: var(--color-brand);
+  color: var(--color-white);
 }
 .progress-button.active-button:hover {
-  background-color: #0e8b53;
-  color: white;
+  background-color: var(--color-brand-hover);
+  color: var(--color-white);
   font-weight: 400;
 }
 .progress-button:hover {
   text-decoration: none;
-  background-color: rgba(1, 38, 7, 0.177);
-  border-color: rgb(2, 58, 11);
-  color: rgb(2, 58, 11);
+  background-color: var(--color-green-hover);
+  border-color: var(--color-brand);
+  color: var(--color-brand-hover);
   font-weight: bold;
 }

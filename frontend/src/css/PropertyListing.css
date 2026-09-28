@@ -1,9 +1,10 @@
+/* PropertyListing.css — migrated to design tokens */
 .property-container {
   width: 100%;
   height: auto;
   margin: 0;
   padding: 2rem 3% 3rem 3%;
-  background: linear-gradient(180deg, #eef7f1 0%, #f6fbf8 100%);
+  background: linear-gradient(180deg, var(--color-green-alt) 0%, var(--color-green-alt2) 100%);
   min-height: 100vh;
 }
 
@@ -12,36 +13,40 @@
   font-weight: 700;
   margin: 0px auto;
   padding: 0px auto;
-  color: #14432c;
+  color: var(--color-text-evergreen);
+  font-family: var(--font-display);
 }
 
 .property-location {
   width: 100%;
   display: flex;
   align-items: center;
-  color: #0e8b53;
+  color: var(--color-brand);
   margin-bottom: 1.25rem;
 }
 .location {
   text-decoration: none;
   font-size: 15px;
+  font-family: var(--font-body);
 }
 
 .property-description-header {
-  color: #14432c;
+  color: var(--color-text-evergreen);
   font-size: 22px;
   font-weight: 700;
+  font-family: var(--font-display);
 }
 
 .property-description {
-  color: #5b6b62;
+  color: var(--color-text-muted-green);
   font-size: 15px;
   line-height: 1.7;
+  font-family: var(--font-body);
 }
 
 .des-and-amenities,
 .property-map {
-  background: #ffffff;
+  background: var(--color-white);
   border-radius: 16px;
   padding: 1.5rem;
   box-shadow: 0 2px 14px rgba(14, 139, 83, 0.1);
@@ -52,7 +57,7 @@
 }
 
 .property-container hr {
-  border-color: #d9ebe1;
+  border-color: var(--color-green-border);
   opacity: 1;
 }
 
@@ -96,10 +101,11 @@
 
 .amenities > p {
   width: 50%;
-  color: #5b6b62;
+  color: var(--color-text-muted-green);
   font-size: 15px;
   display: flex;
   align-items: center;
+  font-family: var(--font-body);
 }
 
 .material-symbols-outlined {
@@ -119,7 +125,7 @@
   margin: 12px;
   width: 100%;
   height: 97.4%;
-  background: #ffffff;
+  background: var(--color-white);
   box-shadow: 0 2px 14px rgba(14, 139, 83, 0.12);
   border-radius: 16px;
   padding: auto 10px auto 10px;
@@ -127,7 +133,7 @@
 
 .payment-field {
   margin: 0.9rem;
-  border: 1px solid #d9ebe1;
+  border: 1px solid var(--color-green-border);
   border-radius: 10px;
   height: 69%;
   padding: 10px 0px 10px 0px;
@@ -137,7 +143,7 @@
 
 .payment-field > .date,
 .guest {
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid var(--color-grey-dark);
   border-radius: 10px;
   padding: 9px 12px;
 }
@@ -147,11 +153,13 @@
 .phone-number::placeholder,
 .full-name::placeholder {
   font-size: 15px;
+  font-family: var(--font-body);
 }
 
 .payment-labels {
   font-size: 16px;
-  color: black;
+  color: var(--color-black);
+  font-family: var(--font-body);
 }
 
 .name-phoneno {
@@ -166,7 +174,8 @@
   margin: 7px auto;
   padding-left: 10px;
   border-radius: 10px;
-  border: 1px solid lightgray;
+  border: 1px solid var(--color-grey-dark);
+  font-family: var(--font-body);
 }
 input:focus {
   outline: none;
@@ -176,22 +185,25 @@ input:focus {
   text-align: center;
   font-size: 20px;
   padding-top: 16px;
-  color: #14432c;
+  color: var(--color-text-evergreen);
+  font-family: var(--font-display);
 }
 
 .price-pernight span {
   font-size: 15px;
-  color: #5b6b62;
+  color: var(--color-text-muted-green);
+  font-family: var(--font-body);
 }
 
 .book-place > button {
   width: 90%;
-  background-color: #0e8b53;
-  color: white;
+  background-color: var(--color-brand);
+  color: var(--color-white);
   border-radius: 10px;
   border: none;
   height: 50px;
   font-size: 15px;
+  font-family: var(--font-body);
   margin: 5px;
   padding: 10px;
 }
@@ -199,15 +211,15 @@ input:focus {
 .book-place > button:hover {
   transition: 0.2s;
   background-color: rgba(1, 38, 7, 0.177);
-  color: #0e8b53;
+  color: var(--color-brand);
   font-size: 17px;
 }
 
 .modal {
-  background-color: Grey;
+  background-color: grey;
   width: 50%;
   height: 500px;
-  color: black;
+  color: var(--color-black);
   position: absolute;
   top: 10%;
   left: 30%;
@@ -217,13 +229,12 @@ input:focus {
   position: absolute;
   bottom: 10px;
   right: 10px;
-  background-color: #fff;
-  border: 1px solid #ddd;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-grey);
   padding: 5px;
   border-radius: 5px;
   cursor: pointer;
-  color: #0e8b53;
-
+  color: var(--color-brand);
   box-shadow: 2px 2px 10px rgb(30, 28, 28);
 }
 
@@ -259,6 +270,7 @@ input:focus {
 
 .map-header {
   margin-bottom: 1rem;
+  font-family: var(--font-display);
 }
 
 .map-image {
@@ -274,7 +286,8 @@ input:focus {
 
 .extra-description {
   font-size: 15px;
-  color: #5b6b62;
+  color: var(--color-text-muted-green);
+  font-family: var(--font-body);
 }
 
 .modal-image {
@@ -313,5 +326,5 @@ input:focus {
 }
 
 .searchDate:hover::placeholder {
-  color: black;
+  color: var(--color-black);
 }

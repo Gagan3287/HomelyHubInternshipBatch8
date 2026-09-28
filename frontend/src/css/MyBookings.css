@@ -1,3 +1,4 @@
+/* MyBookings.css — migrated to design tokens */
 .main-container {
   display: flex;
   flex-direction: column;
@@ -13,17 +14,17 @@
   border-radius: 10px;
   align-items: center;
   transition: transform 0.5s;
-
-  color: black;
+  color: var(--color-black);
+  font-family: var(--font-body);
 }
 
 .mybookings-container:hover {
-  box-shadow: 1px 1px 15px rgb(161, 160, 160);
+  box-shadow: 1px 1px 15px var(--color-grey-mid);
   transform: scale(1.1);
   text-decoration: none;
 }
 .wow:hover {
-  color: blueviolet;
+  color: var(--color-legacy-violet);
   text-decoration: none;
 }
 .image-container {
@@ -47,7 +48,7 @@
 
 .booking-information {
   height: 9rem;
-  background-color: rgb(223, 223, 223);
+  background-color: var(--color-grey);
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   display: flex;
@@ -63,12 +64,13 @@
 .info {
   display: flex;
   margin-right: 0.5rem;
-  color: grey;
+  color: var(--color-grey-text);
   font-size: 13px;
+  font-family: var(--font-body);
 }
 
 .icon {
-  color: grey;
+  color: var(--color-grey-text);
   font-size: 20px;
 }
 
@@ -76,4 +78,5 @@
   display: flex;
   align-items: center;
   margin-top: 0.5rem;
+  font-family: var(--font-body);
 }

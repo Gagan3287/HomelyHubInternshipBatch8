@@ -1,7 +1,8 @@
+/* AiTripPlanner.css — migrated to design tokens */
 .trip-page {
   position: relative;
   padding: 3rem 1rem 5rem;
-  background: linear-gradient(170deg, #f4faf6 0%, #e6f3ea 45%, #d8ecdf 100%);
+  background: linear-gradient(170deg, var(--color-green-alt) 0%, var(--color-light-green) 45%, var(--color-light-green-2) 100%);
   overflow: hidden;
   min-height: calc(100vh - 6rem);
 }
@@ -70,25 +71,27 @@
   gap: 0.5rem;
   font-size: 2.4rem;
   font-weight: 700;
-  color: #14532d;
+  color: var(--color-text-forest);
   margin-bottom: 0.75rem;
   letter-spacing: -0.02em;
+  font-family: var(--font-display);
 }
 
 .trip-sparkle {
-  color: #0e8b53;
+  color: var(--color-brand);
   font-size: 2rem !important;
 }
 
 .trip-hero p {
-  color: #4b5f54;
+  color: var(--color-text-mid-green);
   font-size: 0.95rem;
   line-height: 1.6;
   max-width: 30rem;
   margin: 0 auto;
+  font-family: var(--font-body);
 }
 .trip-form {
-  background: #fff;
+  background: var(--color-white);
   border-radius: 1.5rem;
   padding: 2rem;
   box-shadow: 0 10px 40px rgba(20, 83, 45, 0.1);
@@ -111,22 +114,23 @@
   font-size: 0.82rem;
   font-weight: 600;
   margin-bottom: 0.45rem;
-  color: #33413a;
+  color: var(--color-text-dark-green);
+  font-family: var(--font-body);
 }
 .trip-input {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  border: 1px solid #dfe6e1;
+  border: 1px solid var(--color-input-border);
   border-radius: 0.75rem;
   padding: 0 0.75rem;
-  background: #fff;
+  background: var(--color-white);
   transition: border-color 0.15s, box-shadow 0.15s;
 }
 
 .trip-input .material-symbols-outlined {
   font-size: 1.15rem;
-  color: #8aa196;
+  color: var(--color-text-hint);
   flex: none;
 }
 
@@ -138,15 +142,16 @@
   width: 100%;
   min-width: 0;
   background: transparent;
-  font-family: inherit;
+  font-family: var(--font-body);
+  color: var(--color-text);
 }
 .trip-input:focus-within {
-  border-color: #0e8b53;
+  border-color: var(--color-brand);
   box-shadow: 0 0 0 3px rgba(14, 139, 83, 0.12);
 }
 
 .trip-input:focus-within .material-symbols-outlined {
-  color: #0e8b53;
+  color: var(--color-brand);
 }
 .trip-input input[type="number"] {
   -moz-appearance: textfield;
@@ -173,13 +178,13 @@
   align-items: center;
   gap: 0.3rem;
   padding: 0.45rem 1rem;
-  border: 1px solid #dfe6e1;
+  border: 1px solid var(--color-input-border);
   border-radius: 2rem;
-  background: #fff;
-  color: #33413a;
+  background: var(--color-white);
+  color: var(--color-text-dark-green);
   font-size: 0.85rem;
   font-weight: 500;
-  font-family: inherit;
+  font-family: var(--font-body);
   cursor: pointer;
   transition: background 0.15s, border-color 0.15s, color 0.15s;
 }
@@ -189,14 +194,14 @@
 }
 
 .trip-chip:hover {
-  border-color: #0e8b53;
-  color: #0e8b53;
+  border-color: var(--color-brand);
+  color: var(--color-brand);
 }
 .trip-chip-on,
 .trip-chip-on:hover {
-  background: #0e8b53;
-  border-color: #0e8b53;
-  color: #fff;
+  background: var(--color-brand);
+  border-color: var(--color-brand);
+  color: var(--color-white);
 }
 .trip-generate {
   display: flex;
@@ -208,11 +213,11 @@
   padding: 0.9rem;
   border: none;
   border-radius: 0.75rem;
-  background: #14532d;
-  color: #fff;
+  background: var(--color-text-forest);
+  color: var(--color-white);
   font-size: 1rem;
   font-weight: 600;
-  font-family: inherit;
+  font-family: var(--font-body);
   cursor: pointer;
   transition: background 0.15s;
 }
@@ -222,7 +227,7 @@
 }
 
 .trip-generate:hover:enabled {
-  background: #0e8b53;
+  background: var(--color-brand);
 }
 
 .trip-generate:disabled {
@@ -238,8 +243,8 @@
   width: 2.5rem;
   height: 2.5rem;
   margin: 0 auto 1rem;
-  border: 4px solid #e3efe8;
-  border-top-color: #0e8b53;
+  border: 4px solid var(--color-green-surface);
+  border-top-color: var(--color-brand);
   border-radius: 50%;
   animation: trip-spin 0.9s linear infinite;
 }
@@ -251,8 +256,9 @@
 }
 
 .trip-loading p {
-  color: #666;
+  color: var(--color-grey-text);
   font-size: 0.9rem;
+  font-family: var(--font-body);
 }
 @media (prefers-reduced-motion: reduce) {
   .trip-spinner {
@@ -264,8 +270,8 @@
 }
 
 .trip-summary {
-  background: #e9f4ee;
-  border-left: 4px solid #0e8b53;
+  background: var(--color-light-green);
+  border-left: 4px solid var(--color-brand);
   border-radius: 0.6rem;
   padding: 1.25rem;
   margin-bottom: 2rem;
@@ -275,12 +281,15 @@
   font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
+  font-family: var(--font-display);
+  color: var(--color-text);
 }
 
 .trip-summary p {
-  color: #444;
+  color: var(--color-grey-body);
   font-size: 0.95rem;
   margin: 0;
+  font-family: var(--font-body);
 }
 .trip-days {
   display: grid;
@@ -289,27 +298,30 @@
 }
 
 .trip-day {
-  background: #fff;
+  background: var(--color-white);
   border-radius: 0.75rem;
   padding: 1.25rem;
-  box-shadow: 2px 2px 10px rgba(15, 15, 15, 0.12);
+  box-shadow: var(--shadow-card);
 }
 
 .trip-day-number {
   display: inline-block;
-  background: #0e8b53;
-  color: #fff;
+  background: var(--color-brand);
+  color: var(--color-white);
   font-size: 0.75rem;
   font-weight: 700;
   padding: 0.2rem 0.7rem;
   border-radius: 2rem;
   margin-bottom: 0.6rem;
+  font-family: var(--font-body);
 }
 
 .trip-day h3 {
   font-size: 1.05rem;
   font-weight: 600;
   margin-bottom: 0.6rem;
+  font-family: var(--font-display);
+  color: var(--color-text);
 }
 
 .trip-day ul,
@@ -321,22 +333,25 @@
 .trip-day li,
 .trip-tips li {
   font-size: 0.9rem;
-  color: #444;
+  color: var(--color-grey-body);
   margin-bottom: 0.5rem;
   line-height: 1.5;
+  font-family: var(--font-body);
 }
 .trip-tips {
   margin-top: 2rem;
-  background: #fff;
+  background: var(--color-white);
   border-radius: 0.75rem;
   padding: 1.25rem;
-  box-shadow: 2px 2px 10px rgba(15, 15, 15, 0.12);
+  box-shadow: var(--shadow-card);
 }
 
 .trip-tips h3 {
   font-size: 1.05rem;
   font-weight: 600;
   margin-bottom: 0.75rem;
+  font-family: var(--font-display);
+  color: var(--color-text);
 }
 .trip-stays {
   margin-top: 2.5rem;
@@ -346,20 +361,24 @@
   font-size: 1.3rem;
   font-weight: 700;
   margin-bottom: 0.25rem;
+  font-family: var(--font-display);
+  color: var(--color-text);
 }
 
 .trip-stays-note {
-  color: #666;
+  color: var(--color-grey-text);
   font-size: 0.85rem;
   margin-bottom: 1.25rem;
+  font-family: var(--font-body);
 }
 
 .trip-empty {
-  background: #fdf3e7;
+  background: var(--color-warning-bg);
   border-radius: 0.6rem;
   padding: 1rem;
-  color: #7a5a2f;
+  color: var(--color-warning);
   font-size: 0.9rem;
+  font-family: var(--font-body);
 }
 
 .trip-property-grid {
@@ -369,14 +388,14 @@
 }
 
 .trip-property {
-  background: #fff;
+  background: var(--color-white);
   border-radius: 0.75rem;
   overflow: hidden;
-  box-shadow: 2px 2px 10px rgba(15, 15, 15, 0.15);
+  box-shadow: var(--shadow-card);
 }
 
 .trip-property:hover {
-  box-shadow: 4px 4px 20px rgba(15, 15, 15, 0.25);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .trip-property img {
@@ -394,24 +413,28 @@
   font-size: 1rem;
   font-weight: 600;
   margin-bottom: 0.25rem;
+  font-family: var(--font-body);
+  color: var(--color-text);
 }
 
 .trip-property-place {
   font-size: 0.85rem;
-  color: #666;
+  color: var(--color-grey-text);
   text-transform: capitalize;
   margin-bottom: 0.5rem;
+  font-family: var(--font-body);
 }
 
 .trip-property-price {
   font-size: 0.9rem;
-  color: #444;
+  color: var(--color-grey-body);
   margin-bottom: 0.9rem;
+  font-family: var(--font-body);
 }
 
 .trip-property-price span {
   font-weight: 700;
-  color: #111;
+  color: var(--color-text-evergreen);
 }
 
 .trip-view {
@@ -419,16 +442,17 @@
   text-align: center;
   padding: 0.55rem;
   border-radius: 0.5rem;
-  background: #0e8b53;
-  color: #fff;
+  background: var(--color-brand);
+  color: var(--color-white);
   font-size: 0.9rem;
   font-weight: 600;
   text-decoration: none;
+  font-family: var(--font-body);
 }
 
 .trip-view:hover {
-  background: #0b7344;
-  color: #fff;
+  background: var(--color-brand-dark);
+  color: var(--color-white);
 }
 .ai-trip-link {
   display: flex;
@@ -437,21 +461,22 @@
   height: 2rem;
   padding: 0 0.85rem;
   border-radius: 2rem;
-  background: #0e8b53;
-  color: #fff;
+  background: var(--color-brand);
+  color: var(--color-white);
   font-size: 0.8rem;
   font-weight: 600;
   line-height: 1;
   text-decoration: none;
   white-space: nowrap;
+  font-family: var(--font-body);
 }
 .ai-trip-link .material-symbols-outlined {
   font-size: 1rem;
 }
 
 .ai-trip-link:hover {
-  background: #0b7344;
-  color: #fff;
+  background: var(--color-brand-dark);
+  color: var(--color-white);
 }
 
 @media (max-width: 768px) {

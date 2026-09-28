@@ -1,0 +1,228 @@
+/* ============================================================
+   HOMELYHUB DESIGN TOKENS
+   Light theme on :root — dark theme on [data-theme="dark"]
+   ============================================================ */
+
+/* ── Fonts ── */
+:root {
+  --font-display: "Fraunces", "Georgia", serif;
+  --font-body: "Manrope", "system-ui", sans-serif;
+}
+
+/* ── Colour palette — light theme ── */
+:root {
+  /* Brand Evergreen */
+  --color-primary:         #123C32;
+  --color-primary-soft:    #1B5A49;
+  --color-primary-dark:    #0B2923;
+  /* Legacy brand green kept as alias so existing usages survive token swap */
+  --color-brand:           #0e8b53;
+  --color-brand-hover:     #0a6e41;
+  --color-brand-dark:      #0b7344;
+
+  /* Backgrounds */
+  --color-background:      #F7F4EC;
+  --color-surface:         #FCFBF7;
+  --color-surface-muted:   #EDE7DA;
+
+  /* Text */
+  --color-text:            #1F2926;
+  --color-text-muted:      #66716C;
+  --color-text-faint:      #8AA196;
+
+  /* Borders */
+  --color-border:          #DEDCD4;
+  --color-border-focus:    #1B5A49;
+
+  /* Accent — decorative only, never text/price per override #6 */
+  --color-accent:          #C6A76A;
+  --color-accent-dark:     #8F6D2F;
+
+  /* Status */
+  --color-error:           #B91C1C;
+  --color-error-bg:        #FEE2E2;
+  --color-success:         #15803D;
+  --color-success-bg:      #DCFCE7;
+  --color-warning:         #B45309;
+  --color-warning-bg:      #FEF3C7;
+
+  /* White / surface aliases for mechanical colour migration */
+  --color-white:           #FFFFFF;
+  --color-off-white:       #FBFEFC;
+  --color-light-green:     #E9F4EE;
+  --color-light-green-2:   #E6F4EC;
+  --color-green-border:    #D9EBE1;
+  --color-green-hover:     #F1F8F4;
+  --color-green-surface:   #EAF0EC;
+  --color-green-alt:       #EEF7F1;
+  --color-green-alt2:      #F6FBF8;
+  --color-text-evergreen:  #14432C;
+  --color-text-forest:     #14532D;
+  --color-text-dark-green: #33413A;
+  --color-text-muted-green:#5B6B62;
+  --color-text-mid-green:  #4B5F54;
+  --color-text-hint:       #8AA196;
+  --color-input-bg:        #FBFEFC;
+  --color-input-border:    #DFE6E1;
+  --color-grey-light:      #F1F8F4;
+  --color-grey-bg:         #F8F9FA;
+  --color-grey-border:     #E9ECEF;
+  --color-grey:            #DDDDDD;
+  --color-grey-dark:       #D9D9D9;
+  --color-grey-mid:        #C4C4C4;
+  --color-grey-text:       #666666;
+  --color-grey-body:       #444444;
+  --color-charcoal:        #333333;
+  --color-black:           #000000;
+  --color-body-bg-muted:   rgba(149, 139, 139, 0.15);
+
+  /* Legacy accent colours (used in Payment.css and BookingDetails.css) */
+  --color-legacy-red:      #FF5A5F;
+  --color-legacy-purple:   #5E0EA9;
+  --color-legacy-violet:   #667eea;
+  --color-legacy-grey-btn: #6C757D;
+}
+
+/* ── Colour palette — dark theme ── */
+[data-theme="dark"] {
+  /* Backgrounds */
+  --color-background:      #0D1F1A;
+  --color-surface:         #162520;
+  --color-surface-muted:   #1E3028;
+
+  /* Brand — lightened so it passes contrast on dark backgrounds */
+  --color-primary:         #4ADE80;
+  --color-primary-soft:    #22C55E;
+  --color-primary-dark:    #16A34A;
+  --color-brand:           #22C55E;
+  --color-brand-hover:     #16A34A;
+  --color-brand-dark:      #15803D;
+
+  /* Text */
+  --color-text:            #E8EDE9;
+  --color-text-muted:      #9BB5A5;
+  --color-text-faint:      #6B8F7A;
+
+  /* Borders */
+  --color-border:          #2A3F35;
+  --color-border-focus:    #22C55E;
+
+  /* Accent */
+  --color-accent:          #C6A76A;
+  --color-accent-dark:     #E6C585;
+
+  /* Status */
+  --color-error:           #FCA5A5;
+  --color-error-bg:        #450A0A;
+  --color-success:         #86EFAC;
+  --color-success-bg:      #052E16;
+  --color-warning:         #FCD34D;
+  --color-warning-bg:      #431407;
+
+  /* Surface aliases — dark equivalents */
+  --color-white:           #162520;
+  --color-off-white:       #1A2C24;
+  --color-light-green:     #1A2C24;
+  --color-light-green-2:   #1A3028;
+  --color-green-border:    #2A3F35;
+  --color-green-hover:     #1E3028;
+  --color-green-surface:   #1A2C24;
+  --color-green-alt:       #162520;
+  --color-green-alt2:      #1A2C24;
+  --color-text-evergreen:  #A7D9BE;
+  --color-text-forest:     #86C4A0;
+  --color-text-dark-green: #9BB5A5;
+  --color-text-muted-green:#9BB5A5;
+  --color-text-mid-green:  #9BB5A5;
+  --color-text-hint:       #6B8F7A;
+  --color-input-bg:        #1A2C24;
+  --color-input-border:    #2A3F35;
+  --color-grey-light:      #1E3028;
+  --color-grey-bg:         #162520;
+  --color-grey-border:     #2A3F35;
+  --color-grey:            #2A3F35;
+  --color-grey-dark:       #3A5040;
+  --color-grey-mid:        #4A6055;
+  --color-grey-text:       #9BB5A5;
+  --color-grey-body:       #C8D8CF;
+  --color-charcoal:        #D0DDD5;
+  --color-black:           #E8EDE9;
+  --color-body-bg-muted:   rgba(255, 255, 255, 0.08);
+
+  /* Legacy colours — dark-mode equivalents */
+  --color-legacy-red:      #F87171;
+  --color-legacy-purple:   #A78BFA;
+  --color-legacy-violet:   #8B5CF6;
+  --color-legacy-grey-btn: #6B7280;
+}
+
+/* ── Spacing — 8px scale ── */
+:root {
+  --space-1: 0.5rem;   /* 8px  */
+  --space-2: 1rem;     /* 16px */
+  --space-3: 1.5rem;   /* 24px */
+  --space-4: 2rem;     /* 32px */
+  --space-5: 2.5rem;   /* 40px */
+  --space-6: 3rem;     /* 48px */
+  --space-8: 4rem;     /* 64px */
+  --space-10: 5rem;    /* 80px */
+  --space-12: 6rem;    /* 96px */
+}
+
+/* ── Border Radii ── */
+:root {
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   18px;
+  --radius-xl:   24px;
+  --radius-full: 9999px;
+}
+
+/* ── Shadows — light theme ── */
+:root {
+  --shadow-sm:         0 1px 3px rgba(18, 60, 50, 0.08), 0 1px 2px rgba(18, 60, 50, 0.04);
+  --shadow-md:         0 4px 14px rgba(18, 60, 50, 0.1),  0 2px 6px rgba(18, 60, 50, 0.06);
+  --shadow-lg:         0 10px 40px rgba(18, 60, 50, 0.12), 0 4px 16px rgba(18, 60, 50, 0.08);
+  --shadow-brand:      0 4px 12px rgba(14, 139, 83, 0.3);
+  --shadow-brand-hover:0 6px 16px rgba(14, 139, 83, 0.4);
+  --shadow-card:       2px 2px 10px rgba(15, 15, 15, 0.12);
+  --shadow-card-hover: 4px 4px 20px rgba(15, 15, 15, 0.25);
+}
+[data-theme="dark"] {
+  --shadow-sm:         0 1px 3px rgba(0, 0, 0, 0.3),  0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-md:         0 4px 14px rgba(0, 0, 0, 0.4),  0 2px 6px rgba(0, 0, 0, 0.3);
+  --shadow-lg:         0 10px 40px rgba(0, 0, 0, 0.5), 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-brand:      0 4px 12px rgba(34, 197, 94, 0.25);
+  --shadow-brand-hover:0 6px 16px rgba(34, 197, 94, 0.35);
+  --shadow-card:       2px 2px 10px rgba(0, 0, 0, 0.4);
+  --shadow-card-hover: 4px 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* ── Transitions ── */
+:root {
+  --transition-fast:   all 0.15s ease;
+  --transition-normal: all 0.25s ease;
+  --transition-slow:   all 0.35s ease;
+  --transition-color:  background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+/* ── Type Scale ── */
+:root {
+  --text-hero:   clamp(2.5rem, 5vw, 5rem);
+  --text-h1:     clamp(2rem, 4vw, 3.5rem);
+  --text-h2:     clamp(1.5rem, 3vw, 2.25rem);
+  --text-h3:     clamp(1.2rem, 2vw, 1.5rem);
+  --text-xl:     1.25rem;
+  --text-lg:     1.125rem;
+  --text-base:   1rem;
+  --text-sm:     0.9375rem;
+  --text-xs:     0.875rem;
+  --text-2xs:    0.8125rem;
+  --text-label:  0.75rem;
+}
+
+/* ── Layout ── */
+:root {
+  --max-width:     1440px;
+  --content-width: 90%;
+}
