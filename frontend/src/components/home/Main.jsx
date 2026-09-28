@@ -1,13 +1,20 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Footer from "./Footer";
 import Header from "./Header";
+import HeroSection from "./HeroSection";
 
 const Main = () => {
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
+
   return (
-    <div>
+    <div className="hh-app-shell">
       <Header />
-      <Outlet />
+      {isHomePage && <HeroSection />}
+      <main className="hh-main-content">
+        <Outlet />
+      </main>
       <Footer />
     </div>
   );

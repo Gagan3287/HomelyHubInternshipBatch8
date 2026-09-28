@@ -3,88 +3,90 @@ import PropTypes from "prop-types";
 import "../../css/FilterModal.css";
 import "react-input-range/lib/css/index.css";
 import InputRange from "react-input-range";
+import {
+  X,
+  Home,
+  Building2,
+  Hotel,
+  Building,
+  Sparkles,
+  DoorOpen,
+  LayoutGrid,
+  Wifi,
+  Utensils,
+  Wind,
+  Shirt,
+  Tv,
+  Waves,
+  Car,
+  RotateCcw,
+  Check,
+} from "lucide-react";
 
 const FilterModal = ({ selectedFilters, onFilterChange, onClose }) => {
   const [priceRange, setPriceRange] = useState({
-    min: selectedFilters.priceRange?.min || 600,
-    max: selectedFilters.priceRange?.max || 30000,
+    min: selectedFilters.minPrice || selectedFilters.priceRange?.min || 600,
+    max: selectedFilters.maxPrice || selectedFilters.priceRange?.max || 30000,
   });
 
-  const [propertyType, setPropertyType] = useState(
-    selectedFilters.propertyType || ""
-  );
-
+  const [propertyType, setPropertyType] = useState(selectedFilters.propertyType || "");
   const [roomType, setRoomType] = useState(selectedFilters.roomType || "");
-
   const [amenities, setAmenities] = useState(selectedFilters.amenities || []);
 
   useEffect(() => {
     setPriceRange({
-      min: selectedFilters.priceRange?.min || 600,
-      max: selectedFilters.priceRange?.max || 30000,
+      min: selectedFilters.minPrice || selectedFilters.priceRange?.min || 600,
+      max: selectedFilters.maxPrice || selectedFilters.priceRange?.max || 30000,
     });
     setPropertyType(selectedFilters.propertyType || "");
     setRoomType(selectedFilters.roomType || "");
     setAmenities(selectedFilters.amenities || []);
-  }, [
-    selectedFilters.priceRange,
-    selectedFilters.propertyType,
-    selectedFilters.roomType,
-    selectedFilters.amenities,
-  ]);
+  }, [selectedFilters]);
 
   const handlePriceRangeChange = (value) => {
     setPriceRange(value);
   };
 
   const handleMinInputChange = (e) => {
-    const minValue = parseInt(e.target.value, 10);
+    const minValue = parseInt(e.target.value, 10) || 0;
     setPriceRange((prev) => ({ ...prev, min: minValue }));
   };
 
   const handleMaxInputChange = (e) => {
-    const maxValue = parseInt(e.target.value, 10);
+    const maxValue = parseInt(e.target.value, 10) || 0;
     setPriceRange((prev) => ({ ...prev, max: maxValue }));
   };
 
-  const handleFilterChange = () => {
+  const handleApplyFilters = () => {
     onFilterChange("minPrice", priceRange.min);
     onFilterChange("maxPrice", priceRange.max);
     onFilterChange("propertyType", propertyType);
     onFilterChange("roomType", roomType);
-    onFilterChange(
-      "amenities",
-      amenities.map((a) => a)
-    );
-
+    onFilterChange("amenities", amenities);
     onClose();
   };
 
   const propertyTypeOptions = [
-    { value: "house", label: "House", icon: "home" },
-    { value: "flat", label: "Flat", icon: "apartment" },
-    { value: "guest-house", label: "Guest House", icon: "hotel" },
-    { value: "hotel", label: "Hotel", icon: "meeting_room" },
+    { value: "house", label: "House", icon: Home },
+    { value: "flat", label: "Flat", icon: Building2 },
+    { value: "guest-house", label: "Guest House", icon: Hotel },
+    { value: "hotel", label: "Hotel", icon: Building },
   ];
 
   const roomTypeOptions = [
-    { value: "Entire Home", label: "Entire Home", icon: "hotel" },
-    { value: "Room", label: "Room", icon: "meeting_room" },
-    { value: "Anytype", label: "Any Type", icon: "apartment" },
+    { value: "Entire Home", label: "Entire Home", icon: Sparkles },
+    { value: "Room", label: "Room", icon: DoorOpen },
+    { value: "", label: "Any Type", icon: LayoutGrid },
   ];
 
   const amenitiesOptions = [
-    { value: "Wifi", label: "Wi-Fi", icon: "wifi" },
-    { value: "Kitchen", label: "Kitchen", icon: "kitchen" },
-    { value: "Ac", label: "AC", icon: "ac_unit" },
-    {
-      value: "Washing Machine",
-      label: "Washing Machine",
-      icon: "local_laundry_service",
-    },
-    { value: "Tv", label: "TV", icon: "tv" },
-    { value: "Pool", label: "Pool", icon: "pool" },
-    { value: "Free Parking", label: "Free Parking", icon: "local_parking" },
+    { value: "Wifi", label: "Wi-Fi", icon: Wifi },
+    { value: "Kitchen", label: "Kitchen", icon: Utensils },
+    { value: "Ac", label: "AC", icon: Wind },
+    { value: "Washing Machine", label: "Washing Machine", icon: Shirt },
+    { value: "Tv", label: "TV", icon: Tv },
+    { value: "Pool", label: "Pool", icon: Waves },
+    { value: "Free Parking", label: "Free Parking", icon: Car },
   ];
 
   const handleClearFilters = () => {
@@ -93,119 +95,145 @@ const FilterModal = ({ selectedFilters, onFilterChange, onClose }) => {
     setRoomType("");
     setAmenities([]);
   };
+
   const handleAmenitiesChange = (selectedAmenity) => {
-    setAmenities((prevAmenities) =>
-      prevAmenities.includes(selectedAmenity)
-        ? prevAmenities.filter((item) => item !== selectedAmenity)
-        : [...prevAmenities, selectedAmenity]
+    setAmenities((prev) =>
+      prev.includes(selectedAmenity)
+        ? prev.filter((item) => item !== selectedAmenity)
+        : [...prev, selectedAmenity]
     );
   };
+
   const handlePropertyTypeChange = (selectedType) => {
-    setPropertyType((prevType) =>
-      prevType === selectedType ? "" : selectedType
-    );
+    setPropertyType((prev) => (prev === selectedType ? "" : selectedType));
   };
 
   const handleRoomTypeChange = (selectedType) => {
-    setRoomType((prevType) => (prevType === selectedType ? "" : selectedType));
+    setRoomType((prev) => (prev === selectedType ? "" : selectedType));
   };
 
   return (
-    <div className="modal-backdrop">
-      <div className="modal-content">
-        <h4>
-          Filters <hr />
-        </h4>
-        <button className="close-button" onClick={onClose}>
-          <span>&times;</span>
-        </button>
+    <div className="modal-backdrop" onClick={onClose} role="dialog" aria-modal="true">
+      <div className="modal-content filter-modal-content" onClick={(e) => e.stopPropagation()}>
+        <div className="modal-header-bar">
+          <h3>Filter Stays</h3>
+          <button className="close-button" onClick={onClose} aria-label="Close filters">
+            <X size={20} />
+          </button>
+        </div>
 
         <div className="modal-filters-container">
+          {/* Price Range Section */}
           <div className="filter-section">
-            <label>Price Range:</label>
-
-            <InputRange
-              minValue={600}
-              maxValue={30000}
-              value={priceRange}
-              onChange={handlePriceRangeChange}
-            />
+            <label className="filter-section-title">Price Range per Night</label>
+            <div className="range-slider-wrapper">
+              <InputRange
+                minValue={600}
+                maxValue={30000}
+                value={priceRange}
+                onChange={handlePriceRangeChange}
+              />
+            </div>
             <div className="range-inputs">
-              <input
-                type="number"
-                value={priceRange.min}
-                onChange={handleMinInputChange}
-              />
-              <span>-</span>
-              <input
-                type="number"
-                value={priceRange.max}
-                onChange={handleMaxInputChange}
-              />
-            </div>
-          </div>
-          <div className="filter-section">
-            <label>Property Type:</label>
-            <div className="icon-box">
-              {propertyTypeOptions.map((option) => (
-                <div
-                  key={option.value}
-                  className={`selectable-box ${
-                    propertyType === option.value ? "selected" : ""
-                  }`}
-                  onClick={() => handlePropertyTypeChange(option.value)}
-                >
-                  <span className="material-icons">{option.icon}</span>
-                  <span>{option.label}</span>
-                </div>
-              ))}
+              <div className="range-input-group">
+                <span className="currency-symbol">₹</span>
+                <input
+                  type="number"
+                  value={priceRange.min}
+                  onChange={handleMinInputChange}
+                  aria-label="Minimum price"
+                />
+              </div>
+              <span className="range-separator">-</span>
+              <div className="range-input-group">
+                <span className="currency-symbol">₹</span>
+                <input
+                  type="number"
+                  value={priceRange.max}
+                  onChange={handleMaxInputChange}
+                  aria-label="Maximum price"
+                />
+              </div>
             </div>
           </div>
 
+          {/* Property Type Section */}
           <div className="filter-section">
-            <label>Room Type:</label>
+            <label className="filter-section-title">Property Type</label>
             <div className="icon-box">
-              {roomTypeOptions.map((option) => (
-                <div
-                  key={option.value}
-                  className={`selectable-box ${
-                    roomType === option.value ? "selected" : ""
-                  }`}
-                  onClick={() => handleRoomTypeChange(option.value)}
-                >
-                  <span className="material-icons">{option.icon}</span>
-                  <span>{option.label}</span>
-                </div>
-              ))}
+              {propertyTypeOptions.map((option) => {
+                const Icon = option.icon;
+                const isSelected = propertyType.toLowerCase() === option.value.toLowerCase();
+                return (
+                  <button
+                    type="button"
+                    key={option.value}
+                    className={`selectable-box ${isSelected ? "selected" : ""}`}
+                    onClick={() => handlePropertyTypeChange(option.value)}
+                  >
+                    <Icon size={18} />
+                    <span>{option.label}</span>
+                  </button>
+                );
+              })}
             </div>
           </div>
 
+          {/* Room Type Section */}
           <div className="filter-section">
-            <label>Amenities:</label>
+            <label className="filter-section-title">Room Type</label>
+            <div className="icon-box">
+              {roomTypeOptions.map((option) => {
+                const Icon = option.icon;
+                const isSelected = roomType === option.value;
+                return (
+                  <button
+                    type="button"
+                    key={option.label}
+                    className={`selectable-box ${isSelected ? "selected" : ""}`}
+                    onClick={() => handleRoomTypeChange(option.value)}
+                  >
+                    <Icon size={18} />
+                    <span>{option.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Amenities Section */}
+          <div className="filter-section">
+            <label className="filter-section-title">Amenities</label>
             <div className="amenities-checkboxes">
-              {amenitiesOptions.map((option) => (
-                <div key={option.value} className="amenity-checkbox">
-                  <input
-                    type="checkbox"
-                    value={option.value}
-                    checked={amenities.includes(option.value)}
-                    onChange={() => handleAmenitiesChange(option.value)}
-                  />
-
-                  <span className="material-icons amenitieslabel">
-                    {option.icon}
-                  </span>
-                  <span>{option.label}</span>
-                </div>
-              ))}
+              {amenitiesOptions.map((option) => {
+                const Icon = option.icon;
+                const isChecked = amenities.includes(option.value);
+                return (
+                  <label key={option.value} className={`amenity-chip-option ${isChecked ? "checked" : ""}`}>
+                    <input
+                      type="checkbox"
+                      value={option.value}
+                      checked={isChecked}
+                      onChange={() => handleAmenitiesChange(option.value)}
+                    />
+                    <Icon size={17} />
+                    <span>{option.label}</span>
+                  </label>
+                );
+              })}
             </div>
           </div>
 
+          {/* Action Buttons */}
           <div className="filter-buttons">
-            <button className="clear-button" onClick={handleClearFilters}>
-              Clear
+            <button type="button" className="clear-button" onClick={handleClearFilters}>
+              <RotateCcw size={16} />
+              <span>Clear All</span>
             </button>
-            <button onClick={handleFilterChange}>Apply Filters</button>
+            <button type="button" className="apply-button" onClick={handleApplyFilters}>
+              <Check size={16} />
+              <span>Apply Filters</span>
+            </button>
           </div>
         </div>
       </div>
