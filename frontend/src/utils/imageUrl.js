@@ -20,7 +20,7 @@ export const optimizeImageUrl = (url, width = 720) => {
       urlObj.searchParams.set("auto", "format");
       return urlObj.toString();
     }
-  } catch (err) {
+  } catch {
     return url;
   }
 

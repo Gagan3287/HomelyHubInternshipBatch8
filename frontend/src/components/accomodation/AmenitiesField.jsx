@@ -20,8 +20,9 @@ const AMENITIES_LIST = [
 ];
 
 const AmenitiesField = ({ form }) => {
+  const Field = form.Field;
   return (
-    <form.Field name="amenities">
+    <Field name="amenities">
       {(field) => (
         <div className="accf-amenities-grid">
           {AMENITIES_LIST.map((amenity) => {
@@ -61,7 +62,7 @@ const AmenitiesField = ({ form }) => {
           })}
         </div>
       )}
-    </form.Field>
+    </Field>
   );
 };
 

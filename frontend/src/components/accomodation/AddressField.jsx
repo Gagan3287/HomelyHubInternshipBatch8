@@ -2,9 +2,10 @@ import React from "react";
 import Input from "../ui/Input";
 
 export const AddressField = ({ form }) => {
+  const Field = form.Field;
   return (
     <div className="accf-grid-2">
-      <form.Field name="address.area">
+      <Field name="address.area">
         {(field) => (
           <Input
             id="address_area"
@@ -16,9 +17,9 @@ export const AddressField = ({ form }) => {
             required
           />
         )}
-      </form.Field>
+      </Field>
 
-      <form.Field name="address.city">
+      <Field name="address.city">
         {(field) => (
           <Input
             id="address_city"
@@ -30,9 +31,9 @@ export const AddressField = ({ form }) => {
             required
           />
         )}
-      </form.Field>
+      </Field>
 
-      <form.Field name="address.state">
+      <Field name="address.state">
         {(field) => (
           <Input
             id="address_state"
@@ -44,9 +45,9 @@ export const AddressField = ({ form }) => {
             required
           />
         )}
-      </form.Field>
+      </Field>
 
-      <form.Field name="address.pincode">
+      <Field name="address.pincode">
         {(field) => (
           <Input
             id="address_pincode"
@@ -58,7 +59,7 @@ export const AddressField = ({ form }) => {
             required
           />
         )}
-      </form.Field>
+      </Field>
     </div>
   );
 };

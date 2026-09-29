@@ -14,18 +14,21 @@ import Input from "../ui/Input";
 import Button from "../ui/Button";
 
 // ── Section wrapper
-const Section = ({ icon: Icon, title, subtitle, children }) => (
-  <section className="accf-card">
-    <div className="accf-sec">
-      <Icon size={20} style={{ color: "var(--color-brand)" }} />
-      <div>
-        <h2>{title}</h2>
-        {subtitle && <span className="accf-hint">{subtitle}</span>}
+const Section = ({ icon: iconProp, title, subtitle, children }) => {
+  const Icon = iconProp;
+  return (
+    <section className="accf-card">
+      <div className="accf-sec">
+        {Icon && <Icon size={20} style={{ color: "var(--color-brand)" }} />}
+        <div>
+          <h2>{title}</h2>
+          {subtitle && <span className="accf-hint">{subtitle}</span>}
+        </div>
       </div>
-    </div>
-    {children}
-  </section>
-);
+      {children}
+    </section>
+  );
+};
 
 const AccomodationForm = () => {
   const dispatch = useDispatch();
