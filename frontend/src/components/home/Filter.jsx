@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import FilterModal from "./FilterModal";
+import { SlidersHorizontal } from "lucide-react";
 
-///dynamic//////////
 import { useDispatch } from "react-redux";
 import { propertyAction } from "../../store/Property/property-slice";
 import { getAllProperties } from "../../store/Property/property-action";
@@ -20,14 +20,9 @@ const Filter = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    // TODO: add your "apply filters + fetch properties" logic here.
-    // `selectedFilters` holds the values chosen inside FilterModal.
     dispatch(propertyAction.updateSearchParams(selectedFilters));
     dispatch(getAllProperties());
   }, [selectedFilters, dispatch]);
-
-  
-
 
   const handleFilterChange = (filterName, value) => {
     setSelectedFilters((prevFilters) => ({
@@ -38,12 +33,15 @@ const Filter = () => {
 
   return (
     <>
-      <span
-        className="material-symbols-outlined filter"
+      <button
+        type="button"
+        className="filter-trigger-btn"
         onClick={handleShowAllPhotos}
+        aria-label="Open filter options"
       >
-        tune
-      </span>
+        <SlidersHorizontal size={18} />
+        <span>Filters</span>
+      </button>
       {isModalOpen && (
         <FilterModal
           selectedFilters={selectedFilters}

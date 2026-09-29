@@ -5,41 +5,31 @@ import "../css/ProgressSteps.css";
 const ProgressSteps = () => {
   const location = useLocation();
 
+  const steps = [
+    { path: "/profile", label: "My Profile" },
+    { path: "/user/mybookings", label: "My Bookings" },
+    { path: "/accomodation", label: "My Accommodations" },
+  ];
+
   return (
-    <div className="checkout-progress d-flex justify-content-center mt-5">
-      <NavLink
-        to="/profile"
-        className={`progress-button ${
-          location.pathname === "/profile" ? "active-button" : ""
-        }`}
-      >
-        <div className="triangle-left"></div>
-        My Profile
-        <div className="triangle-right"></div>
-      </NavLink>
-
-      <NavLink
-        to="/user/mybookings"
-        className={`progress-button ${
-          location.pathname === "/user/mybookings" ? "active-button" : ""
-        }`}
-      >
-        <div className="triangle-left"></div>
-        My Bookings
-        <div className="triangle-right"></div>
-      </NavLink>
-
-      <NavLink
-        to="/accomodation"
-        className={`progress-button ${
-          location.pathname === "/accomodation" ? "active-button" : ""
-        }`}
-      >
-        <div className="triangle-left"></div>
-        My Accommodations
-        <div className="triangle-right"></div>
-      </NavLink>
-    </div>
+    <nav className="progress-steps-nav" aria-label="Account navigation steps">
+      <ol className="progress-steps-list">
+        {steps.map((step) => {
+          const isActive = location.pathname === step.path;
+          return (
+            <li key={step.path} className="progress-step-item">
+              <NavLink
+                to={step.path}
+                className={`progress-step-link ${isActive ? "active" : ""}`}
+                aria-current={isActive ? "step" : undefined}
+              >
+                <span className="step-label">{step.label}</span>
+              </NavLink>
+            </li>
+          );
+        })}
+      </ol>
+    </nav>
   );
 };
 

@@ -1,3 +1,4 @@
+/* Accomodation.css — migrated to design tokens */
 .accom-container {
   display: flex;
   flex-direction: column;
@@ -10,8 +11,9 @@
   border-radius: 30px;
   border: none;
   margin-top: 2rem;
-  background-color: #0e8b53;
-  color: white;
+  background-color: var(--color-brand);
+  color: var(--color-white);
+  font-family: var(--font-body);
 }
 .accom-form-container {
   width: 100%;
@@ -32,7 +34,10 @@ form {
   height: 50px;
   padding: 8px;
   border-radius: 10px;
-  border: 1px solid grey;
+  border: 1px solid var(--color-grey);
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-input-bg);
 }
 
 .input-container > input:focus,
@@ -42,6 +47,7 @@ textarea:focus {
 
 textarea::placeholder {
   font-size: 15px;
+  font-family: var(--font-body);
 }
 
 .title::placeholder,
@@ -59,7 +65,10 @@ textarea::placeholder {
   height: 50px;
   padding: 8px;
   border-radius: 10px;
-  border: 1px solid grey;
+  border: 1px solid var(--color-grey);
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-input-bg);
 }
 
 .address-fields > input::placeholder {
@@ -70,16 +79,21 @@ textarea::placeholder {
   border-radius: 10px;
   padding: 8px;
   row-gap: 3;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-input-bg);
 }
 
 div > .form-labels {
-  color: grey;
+  color: var(--color-grey-text);
   font-size: 13px;
+  font-family: var(--font-body);
 }
 
 div > .form-paras {
-  color: grey;
+  color: var(--color-grey-text);
   font-size: 13px;
+  font-family: var(--font-body);
 }
 .perks {
   width: 100%;
@@ -98,7 +112,7 @@ div > .form-paras {
   justify-content: flex-start;
   align-items: center;
   border-radius: 10px;
-  border: 1px solid grey;
+  border: 1px solid var(--color-grey);
 }
 
 .perks > div input {
@@ -117,8 +131,11 @@ section {
 
 section > input {
   border-radius: 10px;
-  border: 1px solid gray;
+  border: 1px solid var(--color-grey);
   padding: 8px;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-input-bg);
 }
 section > input::placeholder {
   font-size: 15px;
@@ -128,14 +145,16 @@ section > input::placeholder {
   width: 100%;
   border-radius: 10px;
   padding: 7px;
-  background-color: #0e8b53;
+  background-color: var(--color-brand);
   border: none;
   margin: 1rem auto;
-  color: white;
+  color: var(--color-white);
+  font-family: var(--font-body);
 }
 
 .checkbox-container > span {
   font-size: 16px;
+  font-family: var(--font-body);
 }
 
 .image-link {
@@ -151,8 +170,8 @@ section > input::placeholder {
 }
 
 .add-button:focus {
-  background-color: #0e8b53;
-  color: white;
+  background-color: var(--color-brand);
+  color: var(--color-white);
   outline: none;
 }
 
@@ -173,13 +192,13 @@ section > input::placeholder {
   height: 50px;
   padding: 8px;
   border-radius: 10px;
-  border: 1px solid grey;
+  border: 1px solid var(--color-grey);
 }
 
 .upload {
   width: 11rem;
   height: 7rem;
-  background-color: lightgrey;
+  background-color: var(--color-grey-mid);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -209,7 +228,7 @@ section > input::placeholder {
 }
 
 .myaccomodation-container:hover {
-  box-shadow: 1px 1px 15px rgb(161, 160, 160);
+  box-shadow: 1px 1px 15px var(--color-grey-mid);
   transform: scale(1.1);
 }
 
@@ -233,7 +252,7 @@ section > input::placeholder {
 
 .myaccomodation-information {
   height: 12rem;
-  background-color: rgb(223, 223, 223);
+  background-color: var(--color-grey);
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   display: flex;
@@ -249,12 +268,13 @@ section > input::placeholder {
 .info {
   display: flex;
   margin-right: 0.5rem;
-  color: grey;
+  color: var(--color-grey-text);
   font-size: 13px;
+  font-family: var(--font-body);
 }
 
 .icon {
-  color: grey;
+  color: var(--color-grey-text);
   font-size: 20px;
 }
 
@@ -265,10 +285,11 @@ section > input::placeholder {
 }
 .myaccomodation-city,
 .myaccomodation-guest {
-  color: grey;
+  color: var(--color-grey-text);
   margin: 0px;
   padding: 0px;
   font-size: 15px;
+  font-family: var(--font-body);
 }
 
 .description-label-row {
@@ -282,12 +303,13 @@ section > input::placeholder {
 .ai-desc {
   border-radius: 10px;
   padding: 5px 14px;
-  background-color: #0e8b53;
+  background-color: var(--color-brand);
   border: none;
-  color: white;
+  color: var(--color-white);
   font-size: 13px;
   white-space: nowrap;
   cursor: pointer;
+  font-family: var(--font-body);
 }
 
 .ai-desc:disabled {
@@ -312,20 +334,22 @@ section > input::placeholder {
   gap: 0.5rem;
   font-size: 2rem;
   font-weight: 700;
-  color: #14532d;
+  color: var(--color-text-forest);
   margin-bottom: 0.5rem;
+  font-family: var(--font-display);
 }
 
-.accf-hero h1 .material-symbols-outlined {
+.accf-hero h1 svg {
   font-size: 1.8rem;
-  color: #0e8b53;
+  color: var(--color-brand);
 }
 
 .accf-hero p {
-  color: #4b5f54;
+  color: var(--color-text-mid-green);
   font-size: 0.95rem;
   max-width: 30rem;
   margin: 0 auto;
+  font-family: var(--font-body);
 }
 .accf-form {
   display: flex;
@@ -334,8 +358,8 @@ section > input::placeholder {
 }
 
 .accf-card {
-  background: #fff;
-  border: 1px solid #eaf0ec;
+  background: var(--color-white);
+  border: 1px solid var(--color-green-surface);
   border-radius: 1rem;
   padding: 1.5rem;
   box-shadow: 0 6px 24px rgba(20, 83, 45, 0.07);
@@ -348,21 +372,23 @@ section > input::placeholder {
   flex-wrap: wrap;
 }
 
-.accf-sec .material-symbols-outlined {
+.accf-sec svg {
   font-size: 1.2rem;
-  color: #0e8b53;
+  color: var(--color-brand);
 }
 
 .accf-sec h2 {
   font-size: 1.05rem;
   font-weight: 700;
-  color: #14532d;
+  color: var(--color-text-forest);
   margin: 0;
+  font-family: var(--font-display);
 }
 
 .accf-hint {
   font-size: 0.8rem;
-  color: #8aa196;
+  color: var(--color-text-hint);
+  font-family: var(--font-body);
 }
 .accf-field {
   display: flex;
@@ -373,30 +399,31 @@ section > input::placeholder {
 .accf-field label {
   font-size: 0.82rem;
   font-weight: 600;
-  color: #33413a;
+  color: var(--color-text-dark-green);
   margin-bottom: 0.35rem;
+  font-family: var(--font-body);
 }
 
 .accf-input {
   width: 100%;
   padding: 0.65rem 0.8rem;
-  border: 1px solid #dfe6e1;
+  border: 1px solid var(--color-input-border);
   border-radius: 0.6rem;
   font-size: 0.95rem;
-  font-family: inherit;
-  background: #fff;
-  color: #1b2a23;
+  font-family: var(--font-body);
+  background: var(--color-white);
+  color: var(--color-text);
   transition: border-color 0.15s, box-shadow 0.15s;
 }
 
 .accf-input:focus {
   outline: none;
-  border-color: #0e8b53;
+  border-color: var(--color-brand);
   box-shadow: 0 0 0 3px rgba(14, 139, 83, 0.12);
 }
 
 .accf-input::placeholder {
-  color: #a8b8b0;
+  color: var(--color-text-hint);
   font-size: 0.9rem;
 }
 
@@ -441,21 +468,21 @@ section > input::placeholder {
   padding: 0 0.9rem;
   border: none;
   border-radius: 2rem;
-  background: #0e8b53;
-  color: #fff;
+  background: var(--color-brand);
+  color: var(--color-white);
   font-size: 0.8rem;
   font-weight: 600;
-  font-family: inherit;
+  font-family: var(--font-body);
   cursor: pointer;
   white-space: nowrap;
 }
 
-.accf-ai .material-symbols-outlined {
+.accf-ai svg {
   font-size: 1rem;
 }
 
 .accf-ai:hover:enabled {
-  background: #0b7344;
+  background: var(--color-brand-dark);
 }
 
 .accf-ai:disabled {
@@ -467,17 +494,17 @@ section > input::placeholder {
   padding: 0.9rem;
   border: none;
   border-radius: 0.75rem;
-  background: #14532d;
-  color: #fff;
+  background: var(--color-text-forest);
+  color: var(--color-white);
   font-size: 1rem;
   font-weight: 600;
-  font-family: inherit;
+  font-family: var(--font-body);
   cursor: pointer;
   transition: background 0.15s;
 }
 
 .accf-save:hover:enabled {
-  background: #0e8b53;
+  background: var(--color-brand);
 }
 
 .accf-save:disabled {
@@ -506,15 +533,17 @@ section > input::placeholder {
 .accf-card .address-fields > input {
   width: 100%;
   padding: 0.65rem 0.8rem;
-  border: 1px solid #dfe6e1;
+  border: 1px solid var(--color-input-border);
   border-radius: 0.6rem;
   font-size: 0.95rem;
-  font-family: inherit;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-input-bg);
 }
 
 .accf-card .address-fields > input:focus {
   outline: none;
-  border-color: #0e8b53;
+  border-color: var(--color-brand);
   box-shadow: 0 0 0 3px rgba(14, 139, 83, 0.12);
 }
 .accf-card .perks {
@@ -531,30 +560,31 @@ section > input::placeholder {
   width: 100%;
   max-width: none;
   padding: 0.55rem 0.75rem;
-  border: 1px solid #dfe6e1;
+  border: 1px solid var(--color-input-border);
   border-radius: 0.6rem;
   cursor: pointer;
 }
 
 .accf-card .checkbox-container:hover {
-  border-color: #0e8b53;
+  border-color: var(--color-brand);
 }
 
 .accf-card .checkbox-container input[type="checkbox"] {
-  accent-color: #0e8b53;
+  accent-color: var(--color-brand);
   width: 1rem;
   height: 1rem;
   cursor: pointer;
   flex: none;
 }
 
-.accf-card .checkbox-container .material-symbols-outlined {
+.accf-card .checkbox-container svg {
   font-size: 1.15rem;
-  color: #0e8b53;
+  color: var(--color-brand);
 }
 
 .accf-card .checkbox-container > span:last-child {
   font-size: 0.85rem;
+  font-family: var(--font-body);
 }
 @media (max-width: 600px) {
   .accf-page {
@@ -578,4 +608,353 @@ section > input::placeholder {
   .accf-desc-row {
     align-items: flex-start;
   }
+}
+
+/* ─────────────────────────────────────────────────────────
+   AccomodationForm – hero / section header tweaks
+───────────────────────────────────────────────────────── */
+.accf-hero h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-text-forest);
+  margin: 0 0 0.5rem;
+  font-family: var(--font-display);
+}
+
+.accf-hero p {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  max-width: 30rem;
+  margin: 0 auto;
+}
+
+.accf-sec h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text-forest);
+  margin: 0 0 0.15rem;
+  font-family: var(--font-display);
+}
+
+/* ─────────────────────────────────────────────────────────
+   Price input – currency prefix
+───────────────────────────────────────────────────────── */
+.accf-price-input-wrap {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--color-input-border);
+  border-radius: 0.6rem;
+  overflow: hidden;
+  background: var(--color-white);
+  transition: box-shadow 0.15s, border-color 0.15s;
+}
+
+.accf-price-input-wrap:focus-within {
+  border-color: var(--color-brand);
+  box-shadow: 0 0 0 3px rgba(14, 139, 83, 0.12);
+}
+
+.accf-price-prefix {
+  padding: 0 0.65rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+  border-right: 1px solid var(--color-input-border);
+  line-height: 2.8rem;
+  user-select: none;
+}
+
+.accf-price-input {
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  flex: 1;
+  background: transparent;
+}
+
+/* ─────────────────────────────────────────────────────────
+   Upload error banner & retry
+───────────────────────────────────────────────────────── */
+.accf-upload-error {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--color-error, #dc2626);
+  font-size: 0.82rem;
+  font-family: var(--font-body);
+  margin-top: 0.4rem;
+}
+
+.accf-error-retry {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-left: auto;
+  border: none;
+  background: none;
+  color: var(--color-brand);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--font-body);
+  padding: 0;
+}
+
+.accf-error-retry:hover {
+  text-decoration: underline;
+}
+
+/* ─────────────────────────────────────────────────────────
+   Description row – AI button row
+───────────────────────────────────────────────────────── */
+.accf-desc-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* ─────────────────────────────────────────────────────────
+   ImagesUploading – dropzone
+───────────────────────────────────────────────────────── */
+.accf-photos-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.accf-dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 2rem 1.5rem;
+  border: 2px dashed var(--color-input-border);
+  border-radius: 0.8rem;
+  background: var(--color-surface);
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  text-align: center;
+}
+
+.accf-dropzone:hover {
+  border-color: var(--color-brand);
+  background: rgba(14, 139, 83, 0.04);
+}
+
+.accf-dropzone-icon {
+  color: var(--color-brand);
+  margin-bottom: 0.25rem;
+}
+
+.accf-dropzone-text {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--color-text-forest);
+  font-family: var(--font-body);
+}
+
+.accf-dropzone-hint {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+}
+
+.accf-hidden-file {
+  display: none;
+}
+
+/* URL row */
+.accf-url-row {
+  display: flex;
+  gap: 0.6rem;
+  align-items: stretch;
+}
+
+.accf-url-row .accf-input {
+  flex: 1;
+}
+
+/* Thumbnail grid */
+.accf-thumb-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr));
+  gap: 0.6rem;
+}
+
+.accf-thumb-item {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 0.6rem;
+  overflow: hidden;
+  border: 1px solid var(--color-input-border);
+  background: var(--color-surface);
+}
+
+.accf-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.accf-thumb-uploading {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-brand);
+}
+
+.accf-thumb-delete {
+  position: absolute;
+  top: 0.3rem;
+  right: 0.3rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.accf-thumb-delete:hover {
+  background: rgba(220, 38, 38, 0.85);
+}
+
+.accf-thumb-add {
+  aspect-ratio: 4 / 3;
+  border-radius: 0.6rem;
+  border: 2px dashed var(--color-input-border);
+  background: var(--color-surface);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.accf-thumb-add:hover {
+  border-color: var(--color-brand);
+  color: var(--color-brand);
+}
+
+.accf-photos-count {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  margin: 0;
+}
+
+/* ─────────────────────────────────────────────────────────
+   AmenitiesField – chip grid
+───────────────────────────────────────────────────────── */
+.accf-amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+  gap: 0.6rem;
+}
+
+.accf-amenity-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.85rem;
+  border-radius: 0.6rem;
+  border: 1px solid var(--color-input-border);
+  background: var(--color-white);
+  font-size: 0.85rem;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  cursor: pointer;
+  user-select: none;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+}
+
+.accf-amenity-chip:hover {
+  border-color: var(--color-brand);
+}
+
+.accf-amenity-chip--on {
+  border-color: var(--color-brand);
+  background: rgba(14, 139, 83, 0.08);
+  color: var(--color-brand);
+  font-weight: 600;
+}
+
+.accf-amenity-hidden-check {
+  display: none;
+}
+
+/* ─────────────────────────────────────────────────────────
+   Dark-mode overrides
+───────────────────────────────────────────────────────── */
+[data-theme="dark"] .accf-card {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+}
+
+[data-theme="dark"] .accf-input {
+  background: var(--color-input-bg);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+[data-theme="dark"] .accf-dropzone {
+  background: var(--color-input-bg);
+  border-color: var(--color-border);
+}
+
+[data-theme="dark"] .accf-dropzone:hover {
+  background: rgba(14, 139, 83, 0.08);
+}
+
+[data-theme="dark"] .accf-thumb-item {
+  border-color: var(--color-border);
+  background: var(--color-input-bg);
+}
+
+[data-theme="dark"] .accf-thumb-add {
+  border-color: var(--color-border);
+  background: var(--color-input-bg);
+}
+
+[data-theme="dark"] .accf-amenity-chip {
+  background: var(--color-input-bg);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+[data-theme="dark"] .accf-amenity-chip--on {
+  background: rgba(14, 139, 83, 0.15);
+  color: var(--color-brand);
+}
+
+[data-theme="dark"] .accf-price-input-wrap {
+  background: var(--color-input-bg);
+  border-color: var(--color-border);
+}
+
+[data-theme="dark"] .accf-price-prefix {
+  background: var(--color-surface);
+  border-right-color: var(--color-border);
+}
+
+[data-theme="dark"] .accf-url-row .accf-input {
+  background: var(--color-input-bg);
 }

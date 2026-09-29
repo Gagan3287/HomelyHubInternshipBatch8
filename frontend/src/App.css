@@ -1,7 +1,19 @@
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,600;1,700&family=Poppins&family=Roboto&display=swap");
+/* App.css — global base styles
+   Google Fonts are loaded once in index.html (Fraunces + Manrope).
+   Poppins, Roboto, and Playfair Display @imports removed. */
+
 body {
   padding: 0;
   margin: 0;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-text);
+  background-color: var(--color-background);
   background-position: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--color-text);
+  line-height: 1.2;
 }

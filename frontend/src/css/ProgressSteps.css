@@ -1,34 +1,71 @@
-.checkout-progress {
+/* =================================================================
+   PROGRESS STEPS — DESIGN TOKEN STYLING
+   Visual standard: Home page (tokens.css)
+   ================================================================= */
+.progress-steps-nav {
   display: flex;
   justify-content: center;
-  margin-top: 5px;
+  margin: 1.5rem 0 2rem 0;
+  width: 100%;
+}
+
+.progress-steps-list {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.progress-step-item {
+  display: flex;
+  align-items: center;
+}
+
+.progress-step-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.125rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.progress-step-link:hover {
+  color: var(--color-primary);
+  border-color: var(--color-primary-soft);
+  background-color: var(--color-surface-muted);
   text-decoration: none;
 }
 
-.progress-button {
-  text-decoration: none;
-  color: black;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  margin-right: 10px;
-  background-color: #ddd;
-  cursor: pointer;
+.progress-step-link.active {
+  color: var(--color-surface);
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  font-weight: 600;
 }
 
-.progress-button.active-button {
-  background-color: #0e8b53;
-  color: white;
+[data-theme="dark"] .progress-step-link.active {
+  color: var(--color-primary-dark);
+  background-color: var(--color-primary);
 }
-.progress-button.active-button:hover {
-  background-color: #0e8b53;
-  color: white;
-  font-weight: 400;
-}
-.progress-button:hover {
-  text-decoration: none;
-  background-color: rgba(1, 38, 7, 0.177);
-  border-color: rgb(2, 58, 11);
-  color: rgb(2, 58, 11);
-  font-weight: bold;
+
+@media (max-width: 600px) {
+  .progress-steps-list {
+    gap: 0.5rem;
+  }
+  .progress-step-link {
+    padding: 0.4rem 0.85rem;
+    font-size: 0.8rem;
+  }
 }

@@ -1,63 +1,100 @@
-import React, { Fragment } from "react";
-import ProgressSteps from "../ProgressSteps";
+import React from "react";
 import { Link } from "react-router-dom";
-import "../../css/Profile.css";
 import { useSelector } from "react-redux";
-import LoadingSpinner from "../LoadingSpinner";
-import moment from "moment";
+import { User, Mail, Calendar, Edit3, KeyRound, Sparkles } from "lucide-react";
+
+import ProgressSteps from "../ProgressSteps";
+import formatDate from "../../utils/formatDate";
+import Button from "../ui/Button";
+import Skeleton from "../ui/Skeleton";
+import { optimizeImageUrl } from "../../utils/imageUrl";
 
 const Profile = () => {
-  
   const { user, loading } = useSelector((state) => state.user);
 
   return (
-    <>
-      <ProgressSteps profile />
+    <div className="account-page-wrapper">
+      <div className="account-container">
+        <ProgressSteps />
 
-      <div className="row justify-content-around mt-5 ">
-        {loading && <LoadingSpinner />}
-        {user && !loading && (
-          <div className="col-6 col-md-6 profile object-fit-cover">
-            <div className="avatars">
-              <figure className="avatar-profile text-center">
-                <img
-                  className="rounded-circle w-100 h-100 "
-                  src={user.avatar.url}
-                  alt="avatar"
-                />
-              </figure>
-              <h3>Welcome {user.name}!</h3>
-            </div>
-            <div className="userinfo">
-              <h4>Full Name</h4>
-              <p>{user.name}</p>
+        <div className="account-header">
+          <h1 className="account-title">My Profile</h1>
+          <p className="account-subtitle">
+            Manage your personal information and account preferences
+          </p>
+        </div>
 
-              <h4>Email Address</h4>
-              <p>{user.email}</p>
-
-              <h4>Joined On</h4>
-              <p>{moment(user.createdAt).format("MMMM Do YYYY")}</p>
-
-              <div className="buttons">
-                <Link
-                  to="/editprofile"
-                  id="edit_profile"
-                  className="btn btn-block my-5"
-                >
-                  Edit Profile
-                </Link>
-                <Link
-                  to="/user/updatepassword"
-                  className="btn btn-block my-5 mx-4"
-                >
-                  Change Password
-                </Link>
+        {loading ? (
+          <div className="profile-card">
+            <div className="profile-grid">
+              <Skeleton variant="image" width="9rem" height="9rem" style={{ borderRadius: "50%" }} />
+              <div className="profile-info-side">
+                <Skeleton variant="heading" width="50%" height="1.5rem" />
+                <Skeleton variant="text" width="70%" height="1rem" />
+                <Skeleton variant="text" width="60%" height="1rem" />
+                <Skeleton variant="text" width="40%" height="1rem" />
               </div>
             </div>
           </div>
-        )}
+        ) : user ? (
+          <div className="profile-card">
+            <div className="profile-grid">
+              <div className="profile-avatar-side">
+                <div className="profile-avatar-wrapper">
+                  <img
+                    className="profile-avatar-img"
+                    src={optimizeImageUrl(user.avatar?.url || "/assets/avatar.png", 300)}
+                    alt={user.name || "User Avatar"}
+                    width="144"
+                    height="144"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+
+              <div className="profile-info-side">
+                <div className="profile-field-group">
+                  <span className="profile-field-label">
+                    <User size={13} style={{ display: "inline", marginRight: "4px" }} /> Full Name
+                  </span>
+                  <p className="profile-field-value">{user.name}</p>
+                </div>
+
+                <div className="profile-field-group">
+                  <span className="profile-field-label">
+                    <Mail size={13} style={{ display: "inline", marginRight: "4px" }} /> Email Address
+                  </span>
+                  <p className="profile-field-value">{user.email}</p>
+                </div>
+
+                <div className="profile-field-group">
+                  <span className="profile-field-label">
+                    <Calendar size={13} style={{ display: "inline", marginRight: "4px" }} /> Joined On
+                  </span>
+                  <p className="profile-field-value">
+                    {formatDate(user.createdAt) || "24 Sep 2026"}
+                  </p>
+                </div>
+
+                <div className="profile-actions">
+                  <Link to="/editprofile" style={{ textDecoration: "none" }}>
+                    <Button id="edit_profile" variant="primary">
+                      <Edit3 size={16} /> Edit Profile
+                    </Button>
+                  </Link>
+
+                  <Link to="/user/updatepassword" style={{ textDecoration: "none" }}>
+                    <Button variant="secondary">
+                      <KeyRound size={16} /> Change Password
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : null}
       </div>
-    </>
+    </div>
   );
 };
 

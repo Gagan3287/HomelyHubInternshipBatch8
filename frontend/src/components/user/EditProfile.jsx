@@ -1,19 +1,25 @@
-import React, { Fragment, useEffect, useState } from "react";
-import "../../css/Profile.css";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateUser } from "../../store/User/user-action";
-import { useForm } from "@tanstack/react-form";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import toast from "react-hot-toast";
+import { useForm } from "@tanstack/react-form";
+import { Upload, Save, ArrowLeft, User, Phone, Image as ImageIcon } from "lucide-react";
+
+import { updateUser } from "../../store/User/user-action";
 import { userActions } from "../../store/User/user-slice";
+import ProgressSteps from "../ProgressSteps";
+import Input from "../ui/Input";
+import Button from "../ui/Button";
 
 const EditProfile = () => {
   const { user, errors, loading } = useSelector((state) => state.user);
-  const [avatarPreview, setAvatarPreview] = useState(
-    user.avatar.url || "https://i.pravatar.cc/150?img=3"
-  );
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const [avatarPreview, setAvatarPreview] = useState(
+    user?.avatar?.url || "/assets/avatar.png"
+  );
+  const [avatarError, setAvatarError] = useState("");
 
   const originalUserData = {
     name: user?.name || "",
@@ -21,7 +27,23 @@ const EditProfile = () => {
     avatar: user?.avatar?.url || "",
   };
 
-  const onChange = (e) => {
+  const handleAvatarChange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    if (!file.type.startsWith("image/")) {
+      setAvatarError("Please select a valid image file");
+      toast.error("Please select a valid image file");
+      return;
+    }
+
+    if (file.size > 5 * 1024 * 1024) {
+      setAvatarError("Image size must be less than 5MB");
+      toast.error("Image size must be less than 5MB");
+      return;
+    }
+
+    setAvatarError("");
     const reader = new FileReader();
     reader.onload = () => {
       if (reader.readyState === 2) {
@@ -29,14 +51,14 @@ const EditProfile = () => {
         form.setFieldValue("avatar", reader.result);
       }
     };
-    reader.readAsDataURL(e.target.files[0]);
+    reader.readAsDataURL(file);
   };
 
   const form = useForm({
     defaultValues: {
-      name: "",
-      phoneNumber: "",
-      avatar: "",
+      name: user?.name || "",
+      phoneNumber: user?.phoneNumber || "",
+      avatar: user?.avatar?.url || "",
     },
     onSubmit: ({ value }) => {
       const updatedFields = {};
@@ -55,7 +77,7 @@ const EditProfile = () => {
         toast("No changes made");
         return;
       }
-      console.log(updatedFields);
+
       dispatch(updateUser(updatedFields));
       navigate("/profile");
       toast.success("Profile Updated");
@@ -64,102 +86,120 @@ const EditProfile = () => {
 
   useEffect(() => {
     if (errors && errors.length > 0) {
-      toast.error(errors);
+      const errorMsg = typeof errors === "string" ? errors : "Failed to update profile";
+      toast.error(errorMsg);
       dispatch(userActions.clearErrors());
-    } else if (user) {
-      form.setFieldValue("name", user.name);
-      form.setFieldValue("phoneNumber", user.phoneNumber);
-      form.setFieldValue(
-        "avatar",
-        user.avatar.url || "https://i.pravatar.cc/150?img=3"
-      );
     }
-  }, [user]);
+  }, [errors, dispatch]);
 
   return (
-    <Fragment>
-      <div className="row wrapper ">
-        <div className="col-10 col-lg-5 updateprofile">
+    <div className="account-page-wrapper">
+      <div className="account-container">
+        <ProgressSteps />
+
+        <div className="account-header">
+          <h1 className="account-title">Update Profile</h1>
+          <p className="account-subtitle">
+            Update your account details and profile picture
+          </p>
+        </div>
+
+        <div className="edit-profile-card">
           <form
             onSubmit={(e) => {
               e.preventDefault();
               form.handleSubmit();
             }}
             encType="multipart/form-data"
+            style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}
           >
-            <h1 className="mt-2 mb-5">Update Profile</h1>
-
-            <form.Field name="name">
-              {(field) => (
-                <div className="form-group">
-                  <label htmlFor="email_field">Name</label>
-                  <input
-                    type="text"
-                    id="name_field"
-                    className="form-control"
-                    value={field.state.value}
-                    onChange={(e) => field.handleChange(e.target.value)}
-                  />
-                </div>
-              )}
-            </form.Field>
-            <form.Field name="phoneNumber">
-              {(field) => (
-                <div className="form-group">
-                  <label htmlFor="email_field">Phone Number</label>
-                  <input
-                    type="number"
-                    id="email_field"
-                    className="form-control"
-                    value={field.state.value}
-                    onChange={(e) => field.handleChange(e.target.value)}
-                  />
-                </div>
-              )}
-            </form.Field>
-
+            {/* Avatar Upload */}
             <form.Field name="avatar">
               {(field) => (
-                <div className="form-group">
-                  <label htmlFor="avatar_upload">Avatar</label>
-                  <div className="d-flex align-items-center">
+                <div className="hh-field">
+                  <label className="hh-label">Profile Picture</label>
+                  <div className="avatar-upload-row">
+                    <img
+                      src={avatarPreview}
+                      alt="Avatar Preview"
+                      className="avatar-preview-sm"
+                      width="72"
+                      height="72"
+                      loading="lazy"
+                    />
                     <div>
-                      <figure className="avatar mr-3 item-rtl">
-                        <img
-                          src={avatarPreview}
-                          className="rounded-circle"
-                          alt="Avatar Preview"
-                        />
-                      </figure>
-                    </div>
-                    <div className="custom-file">
+                      <label htmlFor="avatarupdate" className="avatar-file-btn">
+                        <Upload size={16} /> Choose New Avatar
+                      </label>
                       <input
                         type="file"
-                        name={field.name}
-                        className="custom-file-input"
                         id="avatarupdate"
+                        name={field.name}
                         accept="image/*"
-                        onChange={onChange}
+                        className="hidden-file-input"
+                        onChange={handleAvatarChange}
                       />
-                      <label className="custom-file-label" htmlFor="customFile">
-                        Choose Avatar
-                      </label>
+                      <span className="hh-subtitle" style={{ display: "block", marginTop: "0.35rem", fontSize: "0.75rem" }}>
+                        JPG, PNG or WEBP (Max 5MB)
+                      </span>
+                      {avatarError && <span className="hh-error-msg">{avatarError}</span>}
                     </div>
                   </div>
                 </div>
               )}
             </form.Field>
-            <button
-              type="submit"
-              className=" update-btn btn-block "
 
-            >
-              {loading ? "Updating" : "Update"}
-            </button>
+            {/* Name Field */}
+            <form.Field name="name">
+              {(field) => (
+                <Input
+                  id="name_field"
+                  type="text"
+                  label="Full Name"
+                  value={field.state.value}
+                  onChange={(e) => field.handleChange(e.target.value)}
+                  placeholder="Your Name"
+                  required
+                />
+              )}
+            </form.Field>
+
+            {/* Phone Number Field */}
+            <form.Field name="phoneNumber">
+              {(field) => (
+                <Input
+                  id="phone_field"
+                  type="tel"
+                  label="Phone Number"
+                  value={field.state.value}
+                  onChange={(e) => field.handleChange(e.target.value)}
+                  placeholder="+91 98765 43210"
+                  required
+                />
+              )}
+            </form.Field>
+
+            <div style={{ display: "flex", gap: "1rem", marginTop: "1rem" }}>
+              <Button
+                type="submit"
+                variant="primary"
+                style={{ flex: 1 }}
+                isLoading={loading}
+                isDisabled={loading}
+              >
+                <Save size={16} /> {loading ? "Updating..." : "Save Changes"}
+              </Button>
+
+              <Link to="/profile" style={{ textDecoration: "none" }}>
+                <Button variant="secondary" type="button">
+                  <ArrowLeft size={16} /> Cancel
+                </Button>
+              </Link>
+            </div>
           </form>
         </div>
       </div>
-    </Fragment>
+    </div>
   );
 };
 
