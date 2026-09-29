@@ -11,6 +11,28 @@
   border-radius: var(--radius-sm);
 }
 
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background: var(--color-brand);
+  color: var(--color-white);
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  z-index: 9999;
+  transition: top 0.2s ease;
+  text-decoration: none;
+  box-shadow: var(--shadow-md);
+}
+
+.skip-link:focus {
+  top: 1rem;
+  outline: 3px solid var(--color-gold);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
