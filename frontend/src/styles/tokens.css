@@ -76,8 +76,7 @@
   --color-black:           #000000;
   --color-body-bg-muted:   rgba(149, 139, 139, 0.15);
 
-  /* Legacy accent colours (used in Payment.css and BookingDetails.css) */
-  --color-legacy-red:      #FF5A5F;
+  /* Legacy accent colours (used in BookingDetails.css and MyBookings.css) */
   --color-legacy-purple:   #5E0EA9;
   --color-legacy-violet:   #667eea;
   --color-legacy-grey-btn: #6C757D;
@@ -150,7 +149,6 @@
   --color-body-bg-muted:   rgba(255, 255, 255, 0.08);
 
   /* Legacy colours — dark-mode equivalents */
-  --color-legacy-red:      #F87171;
   --color-legacy-purple:   #A78BFA;
   --color-legacy-violet:   #8B5CF6;
   --color-legacy-grey-btn: #6B7280;

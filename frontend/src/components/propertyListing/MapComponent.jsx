@@ -1,6 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import L from "leaflet";
+
+/* Fix Leaflet default icon paths broken by bundlers */
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl:
+    "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
+  iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
+  shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
+});
 
 const properNames = {
   himachalpradesh: "Himachal Pradesh",
@@ -16,7 +26,7 @@ const properNames = {
 const MapComponent = ({ address }) => {
   const city = properNames[address.city] || address.city;
   const state = properNames[address.state] || address.state;
-  const place = `${address.area}, ${city}, ${state}`;
+  const place = `${address.area ? address.area + ", " : ""}${city}, ${state}`;
 
   const [coordinates, setCoordinates] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -29,15 +39,13 @@ const MapComponent = ({ address }) => {
       `${address.area}, ${city}, ${state}, India`,
       `${address.area}, ${city}, India`,
       `${city}, ${state}, India`,
-    ];
+    ].filter(Boolean);
 
     const fetchCoordinates = async () => {
       try {
         for (const text of searchTexts) {
           const response = await fetch(
-            `https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=in&q=${encodeURIComponent(
-              text
-            )}`
+            `https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=in&q=${encodeURIComponent(text)}`
           );
           const data = await response.json();
 
@@ -54,45 +62,75 @@ const MapComponent = ({ address }) => {
           setCoordinates([]);
           setLoading(false);
         }
-      } catch (error) {
+      } catch (err) {
         if (isMounted) {
-          console.error("Error fetching geocoding data:", error);
+          console.error("Error fetching geocoding data:", err);
           setError("Map is not available right now");
           setLoading(false);
         }
       }
     };
-    fetchCoordinates();
 
+    fetchCoordinates();
     return () => {
       isMounted = false;
     };
   }, [address.area, city, state]);
 
+  if (loading) {
+    return (
+      <div className="pd-map-placeholder pd-map-loading" aria-label="Loading map">
+        <span className="pd-map-placeholder-text">Loading map…</span>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="pd-map-placeholder pd-map-error" role="alert">
+        <span className="pd-map-placeholder-text">{error}</span>
+      </div>
+    );
+  }
+
+  if (coordinates.length === 0) {
+    return (
+      <div className="pd-map-placeholder" aria-label="Map unavailable">
+        <span className="pd-map-placeholder-text">
+          Map not available for this location
+        </span>
+      </div>
+    );
+  }
+
   return (
-    <div>
-      {loading && <p>Loading map...</p>}
-      {error && <p>{error}</p>}
-      {!loading && !error && coordinates.length === 0 && (
-        <p>Map is not available for this location</p>
-      )}
-      {coordinates.length > 0 && (
-        <MapContainer
-          key={coordinates.join(",")}
-          center={coordinates}
-          zoom={14}
-          style={{ height: "320px", width: "100%", borderRadius: "12px" }}
-        >
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          <Marker position={coordinates}>
-            <Popup>{place}</Popup>
-          </Marker>
-        </MapContainer>
-      )}
+    <div
+      className="pd-map-wrap"
+      /**
+       * Touch scroll trap prevention:
+       * The MapContainer itself captures touch events.
+       * We use `scrollWheelZoom={false}` and add touch-action
+       * via CSS .pd-map-wrap to let the page scroll on mobile.
+       */
+    >
+      <MapContainer
+        key={coordinates.join(",")}
+        center={coordinates}
+        zoom={14}
+        scrollWheelZoom={false}
+        className="pd-leaflet-map"
+        aria-label={`Map showing location: ${place}`}
+      >
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Marker position={coordinates}>
+          <Popup>{place}</Popup>
+        </Marker>
+      </MapContainer>
     </div>
   );
 };
+
 export default MapComponent;
