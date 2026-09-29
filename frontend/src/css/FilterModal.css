@@ -165,8 +165,7 @@
   transition: all 0.2s ease;
 }
 
-.selectable-box .material-icons {
-  font-size: 1.15rem;
+.selectable-box svg {
   color: var(--color-brand);
 }
 

@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import Modal from "./Modal";
+import { Images } from "lucide-react";
 
 const PropertyImg = ({ images }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  console.log(images[0].url);
+
+  if (!images || images.length === 0) return null;
 
   const handleShowAllPhotos = () => {
     setIsModalOpen(true);
@@ -16,16 +18,16 @@ const PropertyImg = ({ images }) => {
   return (
     <>
       <div className="property-img-container">
-
         <div className="img-item">
           <img
-            src={images[0].url}
+            src={images[0]?.url}
             className="images"
             style={{
               borderTopLeftRadius: "10px",
               borderBottomLeftRadius: "10px",
             }}
-            alt="property-1"
+            alt="property main photo"
+            loading="eager"
           />
         </div>
 
@@ -34,21 +36,31 @@ const PropertyImg = ({ images }) => {
             <img
               className="images"
               src={image.url}
-              alt={`property-${index + 2}`}
+              alt={`property photo ${index + 2}`}
+              loading="lazy"
             />
           </div>
         ))}
-        <div>
-          <img
-            className="images"
-            src={images[5].url}
-            alt={`property-5`}
-            style={{ borderBottomRightRadius: "10px" }}
-          />
-          <button className="similar-photos" onClick={handleShowAllPhotos}>
-            <span className="material-symbols-outlined">photo_library</span>
-          </button>
-        </div>
+        {images[4] && (
+          <div>
+            <img
+              className="images"
+              src={images[4]?.url || images[0]?.url}
+              alt="property photo 5"
+              style={{ borderBottomRightRadius: "10px" }}
+              loading="lazy"
+            />
+            <button
+              className="similar-photos"
+              onClick={handleShowAllPhotos}
+              aria-label="View all property photos"
+              type="button"
+            >
+              <Images size={18} />
+              <span>Show all photos</span>
+            </button>
+          </div>
+        )}
       </div>
 
       <div className="similar-photos-container"></div>

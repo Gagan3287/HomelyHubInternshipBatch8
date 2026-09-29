@@ -339,7 +339,7 @@ section > input::placeholder {
   font-family: var(--font-display);
 }
 
-.accf-hero h1 .material-symbols-outlined {
+.accf-hero h1 svg {
   font-size: 1.8rem;
   color: var(--color-brand);
 }
@@ -372,7 +372,7 @@ section > input::placeholder {
   flex-wrap: wrap;
 }
 
-.accf-sec .material-symbols-outlined {
+.accf-sec svg {
   font-size: 1.2rem;
   color: var(--color-brand);
 }
@@ -477,7 +477,7 @@ section > input::placeholder {
   white-space: nowrap;
 }
 
-.accf-ai .material-symbols-outlined {
+.accf-ai svg {
   font-size: 1rem;
 }
 
@@ -577,7 +577,7 @@ section > input::placeholder {
   flex: none;
 }
 
-.accf-card .checkbox-container .material-symbols-outlined {
+.accf-card .checkbox-container svg {
   font-size: 1.15rem;
   color: var(--color-brand);
 }
