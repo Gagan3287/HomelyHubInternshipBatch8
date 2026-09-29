@@ -1,5 +1,6 @@
 @import "./styles/tokens.css";
 @import "./styles/primitives.css";
+@import "./css/AuthPages.css";
 
 /* Theme Transitions */
 * {

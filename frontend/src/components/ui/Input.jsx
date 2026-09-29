@@ -26,9 +26,11 @@ export const Input = React.forwardRef(({
         type={isTextarea ? undefined : type}
         rows={isTextarea ? rows || 3 : undefined}
         className={`hh-input ${errorClass} ${className}`.trim()}
+        aria-invalid={!!error}
+        aria-describedby={error && id ? `${id}-error` : undefined}
         {...props}
       />
-      {error && <span className="hh-error-msg">{error}</span>}
+      {error && <span id={id ? `${id}-error` : undefined} className="hh-error-msg">{error}</span>}
     </div>
   );
 });
