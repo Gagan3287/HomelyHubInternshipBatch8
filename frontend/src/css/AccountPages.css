@@ -1,0 +1,429 @@
+/* ============================================================
+   HOMELYHUB — ACCOUNT PAGES STYLES
+   Phase 6 Scope (Profile, Edit Profile, My Bookings, Booking Details)
+   ============================================================ */
+
+.account-page-wrapper {
+  min-height: calc(100vh - 4.5rem);
+  padding: 2rem 1rem 4rem 1rem;
+  background-color: var(--color-background);
+  font-family: var(--font-body);
+}
+
+.account-container {
+  width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.account-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.account-title {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin: 0 0 0.5rem 0;
+}
+
+[data-theme="dark"] .account-title {
+  color: var(--color-text);
+}
+
+.account-subtitle {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* ─────────────────────────────────────────────
+   PROFILE CARD STYLES
+   ───────────────────────────────────────────── */
+
+.profile-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  padding: 2.5rem 2rem;
+  margin: 0 auto;
+  max-width: 760px;
+  width: 100%;
+}
+
+.profile-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .profile-grid {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.profile-avatar-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.profile-avatar-wrapper {
+  width: 9rem;
+  height: 9rem;
+  border-radius: 50%;
+  border: 3px solid var(--color-brand);
+  padding: 4px;
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.profile-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.profile-info-side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.profile-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0.75rem;
+}
+
+.profile-field-group:last-child {
+  border-bottom: none;
+}
+
+.profile-field-label {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.profile-field-value {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.profile-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+@media (max-width: 576px) {
+  .profile-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .profile-actions button,
+  .profile-actions a {
+    width: 100%;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   EDIT PROFILE STYLES
+   ───────────────────────────────────────────── */
+
+.edit-profile-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  padding: 2.5rem 2rem;
+  margin: 0 auto;
+  max-width: 600px;
+  width: 100%;
+}
+
+.avatar-upload-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.avatar-preview-sm {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  border: 2px solid var(--color-border);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.avatar-file-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  background-color: var(--color-green-surface);
+  color: var(--color-brand);
+  border: 1px dashed var(--color-brand);
+  border-radius: var(--radius-md);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.avatar-file-btn:hover {
+  background-color: var(--color-green-hover);
+}
+
+.hidden-file-input {
+  display: none;
+}
+
+/* ─────────────────────────────────────────────
+   MY BOOKINGS CARD STYLES
+   ───────────────────────────────────────────── */
+
+.bookings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.booking-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition-normal);
+  cursor: pointer;
+}
+
+@media (min-width: 640px) {
+  .booking-card {
+    flex-direction: row;
+  }
+}
+
+.booking-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+  border-color: var(--color-brand);
+}
+
+.booking-card-image-wrap {
+  width: 100%;
+  height: 12rem;
+  flex-shrink: 0;
+  overflow: hidden;
+  position: relative;
+  background-color: var(--color-surface-muted);
+}
+
+@media (min-width: 640px) {
+  .booking-card-image-wrap {
+    width: 16rem;
+    height: auto;
+  }
+}
+
+.booking-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.booking-card-content {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.booking-card-title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin: 0 0 0.35rem 0;
+}
+
+[data-theme="dark"] .booking-card-title {
+  color: var(--color-text);
+}
+
+.booking-card-location {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.booking-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin-top: 0.5rem;
+}
+
+.booking-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.booking-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+  margin-top: 0.5rem;
+}
+
+.booking-price-label {
+  font-size: var(--text-2xs);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.booking-price-amount {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-brand);
+}
+
+/* ─────────────────────────────────────────────
+   BOOKING DETAILS STYLES
+   ───────────────────────────────────────────── */
+
+.booking-details-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.back-link-bar {
+  margin-bottom: 1.5rem;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-brand);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.back-link:hover {
+  color: var(--color-brand-hover);
+}
+
+.details-summary-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .details-summary-card {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.details-price-box {
+  background-color: var(--color-green-surface);
+  border: 1px solid var(--color-green-border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.details-price-title {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.details-price-value {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 700;
+  color: var(--color-brand);
+}
+
+/* ─────────────────────────────────────────────
+   EMPTY & SKELETON STATES
+   ───────────────────────────────────────────── */
+
+.account-empty-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 4rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.empty-icon-box {
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 50%;
+  background-color: var(--color-green-surface);
+  color: var(--color-brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
