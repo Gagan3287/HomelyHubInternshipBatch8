@@ -53,6 +53,7 @@ function SEOHelper() {
     const path = location.pathname;
     let title = "HomelyHub — AI-Powered Stay Booking Platform";
     let desc = "Discover and book unique stay accommodations, vacation rentals, apartments, and plan custom trip itineraries with AI.";
+    let isNoIndex = false;
 
     if (path === "/") {
       title = "HomelyHub | Find & Book Unique Vacation Stays & Accommodations";
@@ -63,31 +64,59 @@ function SEOHelper() {
     } else if (path === "/ai-trip-planner") {
       title = "Trip Genie — AI Travel Itinerary & Stay Planner | HomelyHub";
       desc = "Generate custom day-by-day travel itineraries and find matching accommodations based on your budget.";
-    } else if (path === "/accomodation") {
+    } else if (path === "/accomodation" || path.startsWith("/accomodation/")) {
       title = "My Accommodations & Host Listings | HomelyHub";
       desc = "Manage your property listings or list a new stay accommodation on HomelyHub.";
+      isNoIndex = true;
     } else if (path === "/login") {
-      title = "Login | HomelyHub";
+      title = "Log In | HomelyHub";
       desc = "Log in to your HomelyHub account to manage bookings and property listings.";
+      isNoIndex = true;
     } else if (path === "/signup") {
       title = "Sign Up | HomelyHub";
       desc = "Create a new HomelyHub account to start booking stays or listing your properties.";
+      isNoIndex = true;
     } else if (path === "/profile" || path === "/editprofile") {
       title = "My Account Profile | HomelyHub";
       desc = "View and manage your account details on HomelyHub.";
+      isNoIndex = true;
     } else if (path.startsWith("/user/mybookings")) {
       title = "My Bookings | HomelyHub";
       desc = "View your stay reservation history and active bookings on HomelyHub.";
+      isNoIndex = true;
+    } else if (path.startsWith("/payment/")) {
+      title = "Secure Payment & Checkout | HomelyHub";
+      desc = "Complete your stay reservation securely on HomelyHub.";
+      isNoIndex = true;
+    } else if (path === "/forgetpassword" || path === "/updatepassword" || path.startsWith("/user/resetpassword/")) {
+      title = "Account Security & Password | HomelyHub";
+      desc = "Manage your account password and authentication settings on HomelyHub.";
+      isNoIndex = true;
     }
 
     document.title = title;
+
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) metaDesc.setAttribute("content", desc);
+
+    let metaRobots = document.querySelector('meta[name="robots"]');
+    if (metaRobots) {
+      metaRobots.setAttribute("content", isNoIndex ? "noindex, nofollow" : "index, follow");
+    }
 
     const canonical = document.querySelector('link[rel="canonical"]');
     if (canonical) {
       canonical.setAttribute("href", `https://homely-hubx.vercel.app${path}`);
     }
+
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute("content", title);
+
+    const ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) ogDesc.setAttribute("content", desc);
+
+    const ogUrl = document.querySelector('meta[property="og:url"]');
+    if (ogUrl) ogUrl.setAttribute("content", `https://homely-hubx.vercel.app${path}`);
   }, [location]);
 
   return null;
