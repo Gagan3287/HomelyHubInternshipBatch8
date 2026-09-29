@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/User/user-action";
@@ -28,8 +28,21 @@ const Header = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setUserMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   const logoutUser = () => {
+    setUserMenuOpen(false);
     dispatch(logout());
     toast.success("Logged out successfully");
     navigate("/");
@@ -105,13 +118,13 @@ const Header = () => {
               <span>Log In</span>
             </Link>
           ) : (
-            <div className="dropdown hh-user-dropdown">
+            <div className="hh-user-dropdown" ref={dropdownRef}>
               <button
-                className="hh-user-menu-btn dropdown-toggle"
+                className="hh-user-menu-btn"
                 type="button"
-                id="userMenuDropdown"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
+                onClick={() => setUserMenuOpen((prev) => !prev)}
+                aria-expanded={userMenuOpen}
+                aria-label="User account menu"
               >
                 {user?.avatar?.url ? (
                   <img src={user.avatar.url} className="hh-user-avatar" alt={user.name || "User"} />
@@ -124,21 +137,31 @@ const Header = () => {
                 <ChevronDown size={14} className="hh-user-chevron" />
               </button>
 
-              <ul className="dropdown-menu dropdown-menu-end hh-dropdown-menu" aria-labelledby="userMenuDropdown">
-                <li>
-                  <Link className="dropdown-item hh-dropdown-item" to="/profile">
-                    <User size={16} />
-                    <span>My Account</span>
-                  </Link>
-                </li>
-                <li><hr className="dropdown-divider" /></li>
-                <li>
-                  <button className="dropdown-item hh-dropdown-item text-danger" type="button" onClick={logoutUser}>
-                    <LogOut size={16} />
-                    <span>Log Out</span>
-                  </button>
-                </li>
-              </ul>
+              {userMenuOpen && (
+                <ul className="hh-dropdown-menu show">
+                  <li>
+                    <Link
+                      className="hh-dropdown-item"
+                      to="/profile"
+                      onClick={() => setUserMenuOpen(false)}
+                    >
+                      <User size={16} />
+                      <span>My Account</span>
+                    </Link>
+                  </li>
+                  <li><hr className="hh-dropdown-divider" /></li>
+                  <li>
+                    <button
+                      className="hh-dropdown-item text-danger"
+                      type="button"
+                      onClick={logoutUser}
+                    >
+                      <LogOut size={16} />
+                      <span>Log Out</span>
+                    </button>
+                  </li>
+                </ul>
+              )}
             </div>
           )}
 

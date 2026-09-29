@@ -145,6 +145,10 @@
 }
 
 /* User Avatar Dropdown */
+.hh-user-dropdown {
+  position: relative;
+}
+
 .hh-user-menu-btn {
   display: flex;
   align-items: center;
@@ -197,12 +201,24 @@
 }
 
 .hh-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 1000;
+  min-width: 170px;
+  list-style: none;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-lg);
   padding: 0.5rem 0;
   margin-top: 0.5rem;
+}
+
+.hh-dropdown-divider {
+  border: 0;
+  border-top: 1px solid var(--color-border);
+  margin: 0.35rem 0;
 }
 
 .hh-dropdown-item {
