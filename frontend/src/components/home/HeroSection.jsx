@@ -41,6 +41,8 @@ const HeroSection = () => {
               src="/assets/property2.webp"
               alt="Featured accommodation"
               className="hh-hero-img"
+              width="600"
+              height="420"
               loading="eager"
             />
           </div>

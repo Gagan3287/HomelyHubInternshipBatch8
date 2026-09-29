@@ -7,6 +7,7 @@ import ProgressSteps from "../ProgressSteps";
 import formatDate from "../../utils/formatDate";
 import Button from "../ui/Button";
 import Skeleton from "../ui/Skeleton";
+import { optimizeImageUrl } from "../../utils/imageUrl";
 
 const Profile = () => {
   const { user, loading } = useSelector((state) => state.user);
@@ -42,8 +43,11 @@ const Profile = () => {
                 <div className="profile-avatar-wrapper">
                   <img
                     className="profile-avatar-img"
-                    src={user.avatar?.url || "/assets/avatar.png"}
+                    src={optimizeImageUrl(user.avatar?.url || "/assets/avatar.png", 300)}
                     alt={user.name || "User Avatar"}
+                    width="144"
+                    height="144"
+                    loading="lazy"
                   />
                 </div>
               </div>

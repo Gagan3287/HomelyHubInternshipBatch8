@@ -19,7 +19,7 @@ import {
   X,
   ChevronDown,
 } from "lucide-react";
-import "../../css/Home.css";
+import { optimizeImageUrl } from "../../utils/imageUrl";
 
 const Header = () => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -71,7 +71,14 @@ const Header = () => {
       <div className="hh-header-container">
         {/* Brand Logo & Wordmark */}
         <Link to="/" className="hh-brand" onClick={refreshFunction}>
-          <img src="/assets/logo.png" alt="HomelyHub Logo" className="hh-logo-img" />
+          <img
+            src="/assets/logo.png"
+            alt="HomelyHub Logo"
+            className="hh-logo-img"
+            width="32"
+            height="32"
+            loading="eager"
+          />
           <span className="hh-brand-name">HomelyHub</span>
         </Link>
 
@@ -127,7 +134,14 @@ const Header = () => {
                 aria-label="User account menu"
               >
                 {user?.avatar?.url ? (
-                  <img src={user.avatar.url} className="hh-user-avatar" alt={user.name || "User"} />
+                  <img
+                    src={optimizeImageUrl(user.avatar.url, 100)}
+                    className="hh-user-avatar"
+                    alt={user.name || "User"}
+                    width="34"
+                    height="34"
+                    loading="lazy"
+                  />
                 ) : (
                   <div className="hh-user-avatar-placeholder">
                     {user?.name ? user.name.charAt(0).toUpperCase() : "U"}

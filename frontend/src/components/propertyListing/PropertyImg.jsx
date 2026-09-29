@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Modal from "./Modal";
 import { Images } from "lucide-react";
+import { optimizeImageUrl } from "../../utils/imageUrl";
 
 const PropertyImg = ({ images }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -20,13 +21,15 @@ const PropertyImg = ({ images }) => {
       <div className="property-img-container">
         <div className="img-item">
           <img
-            src={images[0]?.url}
+            src={optimizeImageUrl(images[0]?.url, 960)}
             className="images"
             style={{
               borderTopLeftRadius: "10px",
               borderBottomLeftRadius: "10px",
             }}
-            alt="property main photo"
+            alt="Property main photo"
+            width="600"
+            height="400"
             loading="eager"
           />
         </div>
@@ -35,8 +38,10 @@ const PropertyImg = ({ images }) => {
           <div key={index}>
             <img
               className="images"
-              src={image.url}
-              alt={`property photo ${index + 2}`}
+              src={optimizeImageUrl(image.url, 600)}
+              alt={`Property photo ${index + 2}`}
+              width="300"
+              height="200"
               loading="lazy"
             />
           </div>
@@ -45,9 +50,11 @@ const PropertyImg = ({ images }) => {
           <div>
             <img
               className="images"
-              src={images[4]?.url || images[0]?.url}
-              alt="property photo 5"
+              src={optimizeImageUrl(images[4]?.url || images[0]?.url, 600)}
+              alt="Property photo 5"
               style={{ borderBottomRightRadius: "10px" }}
+              width="300"
+              height="200"
               loading="lazy"
             />
             <button

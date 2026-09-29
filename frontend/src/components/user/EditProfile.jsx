@@ -123,6 +123,9 @@ const EditProfile = () => {
                       src={avatarPreview}
                       alt="Avatar Preview"
                       className="avatar-preview-sm"
+                      width="72"
+                      height="72"
+                      loading="lazy"
                     />
                     <div>
                       <label htmlFor="avatarupdate" className="avatar-file-btn">

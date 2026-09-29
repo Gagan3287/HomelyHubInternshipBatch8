@@ -9,6 +9,7 @@ import formatDate, { calculateNights } from "../../utils/formatDate";
 import formatCurrency from "../../utils/formatCurrency";
 import Button from "../ui/Button";
 import Skeleton from "../ui/Skeleton";
+import { optimizeImageUrl } from "../../utils/imageUrl";
 
 const MyBookings = () => {
   const navigate = useNavigate();
@@ -146,9 +147,12 @@ const MyBookings = () => {
                 >
                   <div className="booking-card-image-wrap">
                     <img
-                      src={propertyImage}
+                      src={optimizeImageUrl(propertyImage, 480)}
                       alt={booking.property?.propertyName || "Property"}
                       className="booking-card-image"
+                      width="240"
+                      height="160"
+                      loading="lazy"
                     />
                   </div>
 

@@ -4,6 +4,7 @@ import { MapPin, Users, Clock, Home, Building2, Hotel, Building, ExternalLink } 
 
 import formatCurrency from "../../utils/formatCurrency";
 import { format12HourTime } from "../../utils/formatDate";
+import { optimizeImageUrl } from "../../utils/imageUrl";
 
 const TYPE_ICONS = {
   house: Home,
@@ -17,10 +18,12 @@ const MyAccomodation = ({ accomodation = [] }) => {
   return (
     <div className="bookings-list">
       {accomodation.map((place) => {
-        const imageUrl =
+        const rawImageUrl =
           place.images && place.images.length > 0 && place.images[0]?.url
             ? place.images[0].url
             : "/assets/image1.jpeg";
+
+        const imageUrl = optimizeImageUrl(rawImageUrl, 480);
 
         const locationText = place.address
           ? [place.address.area, place.address.city, place.address.state]
@@ -40,6 +43,9 @@ const MyAccomodation = ({ accomodation = [] }) => {
                 src={imageUrl}
                 alt={place.propertyName || "Accommodation"}
                 className="booking-card-image"
+                width="240"
+                height="160"
+                loading="lazy"
               />
             </div>
 

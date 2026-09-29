@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { MapPin, Users, Home, Building2, Hotel, Building } from "lucide-react";
 import { formatPrice } from "../../utils/formatCurrency";
+import { optimizeImageUrl } from "../../utils/imageUrl";
 
 const TYPE_ICONS = {
   house: Home,
@@ -25,10 +26,12 @@ const PropertyCard = ({ property }) => {
     maximumGuest,
   } = property;
 
-  const imageUrl =
+  const rawImageUrl =
     !imgError && images && images.length > 0 && images[0]?.url
       ? images[0].url
       : null;
+
+  const imageUrl = rawImageUrl ? optimizeImageUrl(rawImageUrl, 600) : null;
 
   const locationText = address
     ? `${address.city || ""}${address.city && address.state ? ", " : ""}${address.state || ""}`
@@ -45,6 +48,8 @@ const PropertyCard = ({ property }) => {
               src={imageUrl}
               alt={propertyName || "Accommodation"}
               className="hh-card-image"
+              width="400"
+              height="280"
               loading="lazy"
               onError={() => setImgError(true)}
             />

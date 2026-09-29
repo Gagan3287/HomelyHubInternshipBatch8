@@ -10,7 +10,14 @@ const Footer = () => {
         {/* Brand Column */}
         <div className="hh-footer-brand-col">
           <Link to="/" className="hh-footer-brand">
-            <img src="/assets/logo.png" alt="HomelyHub Logo" className="hh-footer-logo" />
+            <img
+              src="/assets/logo.png"
+              alt="HomelyHub Logo"
+              className="hh-footer-logo"
+              width="28"
+              height="28"
+              loading="lazy"
+            />
             <span className="hh-footer-brand-name">HomelyHub</span>
           </Link>
           <p className="hh-footer-tagline">
