@@ -1,77 +1,67 @@
 import React from "react";
+import {
+  Wifi,
+  ChefHat,
+  Car,
+  WashingMachine,
+  Tv,
+  Waves,
+  Wind,
+} from "lucide-react";
 
-const initialamenities = [
-  { id: "wifi", value: "Wifi", checked: false, icon: "wifi" },
-  {
-    id: "kitchen",
-    value: "Kitchen",
-    checked: false,
-    icon: "kitchen",
-  },
-  {
-    id: "parking",
-    value: "Free Parking",
-    checked: false,
-    icon: "garage_home",
-  },
-  {
-    id: "washingmachine",
-    value: "Washing Machine",
-    icon: "local_laundry_service",
-    checked: false,
-  },
-  { id: "tv", value: "Tv", checked: false, icon: "tv" },
-  { id: "pool", value: "Pool", checked: false, icon: "pool" },
-  { id: "ac", value: "Ac", checked: false, icon: "air" },
+const AMENITIES_LIST = [
+  { id: "wifi", value: "Wifi", icon: Wifi },
+  { id: "kitchen", value: "Kitchen", icon: ChefHat },
+  { id: "parking", value: "Free Parking", icon: Car },
+  { id: "washingmachine", value: "Washing Machine", icon: WashingMachine },
+  { id: "tv", value: "Tv", icon: Tv },
+  { id: "pool", value: "Pool", icon: Waves },
+  { id: "ac", value: "Ac", icon: Wind },
 ];
 
 const AmenitiesField = ({ form }) => {
   return (
-    <div className="perks-container">
-      <h4 className="perks-header">Amenities</h4>
-      <p className="form-paras">Select perks</p>
-
-      <form.Field name="amenities">
-        {(field) => (
-          <div className="perks row">
-            {initialamenities.map((amenity) => (
-              <div
+    <form.Field name="amenities">
+      {(field) => (
+        <div className="accf-amenities-grid">
+          {AMENITIES_LIST.map((amenity) => {
+            const Icon = amenity.icon;
+            const isChecked = field.state.value.some(
+              (item) => item.name === amenity.value
+            );
+            return (
+              <label
                 key={amenity.id}
-                className={`${amenity.id}-box checkbox-container col-sm-12 col-md-3 col-lg-2`}
+                className={`accf-amenity-chip ${isChecked ? "accf-amenity-chip--on" : ""}`}
+                aria-pressed={isChecked}
               >
                 <input
                   type="checkbox"
-                  checked={field.state.value.some(
-                    (item) => item.name === amenity.value
-                  )}
+                  className="accf-amenity-hidden-check"
+                  checked={isChecked}
                   onChange={(e) => {
-                    const isChecked = e.target.checked;
-                    const currentAmenities = field.state.value || [];
-
-                    if (isChecked) {
+                    const checked = e.target.checked;
+                    const current = field.state.value || [];
+                    if (checked) {
                       field.handleChange([
-                        ...currentAmenities,
-                        { name: amenity.value, icon: amenity.icon },
+                        ...current,
+                        { name: amenity.value, icon: amenity.id },
                       ]);
                     } else {
                       field.handleChange(
-                        currentAmenities.filter(
-                          (item) => item.name !== amenity.value
-                        )
+                        current.filter((item) => item.name !== amenity.value)
                       );
                     }
                   }}
                 />
-                <span className="material-symbols-outlined">
-                  {amenity.icon}
-                </span>
+                <Icon size={16} />
                 <span>{amenity.value}</span>
-              </div>
-            ))}
-          </div>
-        )}
-      </form.Field>
-    </div>
+              </label>
+            );
+          })}
+        </div>
+      )}
+    </form.Field>
   );
 };
 

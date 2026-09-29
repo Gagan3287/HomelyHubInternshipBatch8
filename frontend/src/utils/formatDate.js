@@ -52,4 +52,24 @@ export const calculateNights = (fromDate, toDate, fallbackNights) => {
   return nights > 0 ? nights : 1;
 };
 
+/**
+ * Formats 24-hour time strings ("14:30" or "17:00:00") into 12-hour format ("2:30 PM", "5:00 PM").
+ */
+export const format12HourTime = (timeStr) => {
+  if (!timeStr) return "N/A";
+  if (typeof timeStr !== "string") return String(timeStr);
+
+  if (/AM|PM/i.test(timeStr)) return timeStr.toUpperCase();
+
+  const match = timeStr.match(/^(\d{1,2}):(\d{2})/);
+  if (!match) return timeStr;
+
+  let hours = parseInt(match[1], 10);
+  const minutes = match[2];
+  const ampm = hours >= 12 ? "PM" : "AM";
+  hours = hours % 12 || 12;
+
+  return `${hours}:${minutes} ${ampm}`;
+};
+
 export default formatDate;
