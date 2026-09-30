@@ -3,11 +3,26 @@
 *::after {
   box-sizing: border-box;
 }
+
+/*
+  CRITICAL — phase 11 fix:
+  Prevent ANY element from creating horizontal page scroll.
+  Without this, overflowing content (e.g. Ant Design RangePicker)
+  inflates the mobile layout-viewport, making window.innerWidth
+  report ~916px instead of ~390px, which stops ALL max-width media
+  queries from firing on real devices.
+*/
+html {
+  overflow-x: clip;
+}
+
 img {
   max-width: 100%;
+  height: auto;
 }
 body {
   overflow-wrap: break-word;
+  max-width: 100%;
 }
 @media (max-width: 1024px) {
   .propertylist {
