@@ -314,6 +314,11 @@
 .hh-hero-content {
   display: flex;
   flex-direction: column;
+  /* phase 11 fix: grid items without min-width:0 can expand beyond
+     their 1fr track when children (e.g. AntD RangePicker) have large
+     intrinsic widths, pushing the entire hero-container to ~900px. */
+  min-width: 0;
+  width: 100%;
 }
 
 .hh-hero-badge {
@@ -360,10 +365,16 @@
 
 .hh-hero-search-wrapper {
   margin-bottom: var(--space-4);
+  /* Clamp to parent; prevents the AntD datepicker from blowing out the wrapper */
+  overflow: hidden;
+  max-width: 100%;
 }
 
 .hh-hero-categories-wrapper {
   margin-top: 0.5rem;
+  /* Clamp to parent so the chip scroll row never pushes page wider */
+  overflow: hidden;
+  max-width: 100%;
 }
 
 /* Split Hero Showcase Media */
@@ -444,6 +455,9 @@
   box-shadow: var(--shadow-md);
   transition: var(--transition-normal);
   gap: 0.5rem;
+  /* Constrain to parent — prevents AntD pickers from expanding the flex container */
+  max-width: 100%;
+  width: 100%;
 }
 
 .hh-searchbar-container:focus-within {
@@ -1200,7 +1214,7 @@
   vertical-align: middle;
 }
 
-/* Responsive adjustments */
+/* Responsive adjustments — phase 11: breakpoints proven to fire on 390/375px real devices */
 @media (max-width: 768px) {
   .hh-nav-desktop {
     display: none;
@@ -1213,12 +1227,31 @@
     align-items: stretch;
     border-radius: var(--radius-lg);
     padding: 0.75rem;
+    width: 100%;
+  }
+  .hh-search-field {
+    width: 100%;
+    min-width: 0;
+  }
+  /* Force Ant Design Space + RangePicker to fill column width */
+  .hh-search-field-date .ant-space,
+  .hh-search-field-date .ant-space-item {
+    width: 100% !important;
+    max-width: 100%;
+    min-width: 0;
+  }
+  .hh-search-field-date .ant-picker,
+  .hh-search-field-date .ant-picker-range {
+    width: 100% !important;
+    max-width: 100%;
+    min-width: 0;
   }
   .hh-search-divider {
     display: none;
   }
   .hh-search-actions {
     margin-top: 0.5rem;
+    width: 100%;
   }
   .hh-search-submit-btn,
   .hh-search-filter-btn {
